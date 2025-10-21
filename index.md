@@ -1,4 +1,4 @@
-layaout: home
+layout: home
 title: Bienvenido
 
 # Esto es KRONOS ZONE
