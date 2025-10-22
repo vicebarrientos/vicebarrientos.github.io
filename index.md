@@ -11,8 +11,12 @@ header:
       url: "https://discord.gg/ZeYesFzdrb"
     - label: "Entrar a la Tienda"
       url: "https://tienda.kronoszone.me"
-excerpt: "**mc.kronoszone.me** \nVersiones 1.8–1.21.10 \n¡Eventos semanales!"
+excerpt: ""
 ---
+
+**mc.kronoszone.me**
+Versiones 1.8–1.21.10
+¡Eventos semanales!
 
 ### ¿Qué es Kronos Zone?
 Servidor de Minecraft en español con modalidades **Survival**, **SkyPvP** y **Minijuegos**.
