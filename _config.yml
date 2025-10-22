@@ -5,9 +5,10 @@ minimal_mistakes_skin: "dark"  # prueba: default, dark, neon, air, etc.
 
 # URL de tu sitio (ajústala cuando tengas el dominio o la URL de GitHub Pages)
 url: "http://www.kronoszone.me"
+baseurl: ""
 
 logo: "/assets/img/banner.jpg"  # opcional (para la cabecera compacta)
-repository: "vicebarrientos/kronos-zone"
+repository: "vicebarrientos/vicebarrientos.github.io"
 
 # Navegación principal (desde _data/navigation.yml)
 collections:
