@@ -1,17 +1,92 @@
 ---
-# Necesario para que Jekyll lo compile a /assets/css/main.css
+# Hace que Jekyll compile a /assets/css/main.css
 ---
 
-@import "minimal-mistakes/skins/dark";  /* o el skin que uses */
+/* ====== Minimal Mistakes (tema + skin) ====== */
+@import "minimal-mistakes/skins/dark"; /* cambia si usas otro skin */
 @import "minimal-mistakes";
 
-/* Fuente global: Poppins */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+/* ====== Fuentes ====== */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap');
 
+/* ====== Tipografías ====== */
 html, body,
-.page__hero-title, .page__lead,
-h1, h2, h3, h4, h5, h6,
-p, a, button, input, textarea {
+p, a, li, input, textarea, button, .page__lead {
   font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif !important;
-  letter-spacing: .3px;
+  letter-spacing: .2px;
 }
+
+.page__hero-title, h1, h2, h3 {
+  font-family: 'Orbitron', sans-serif !important;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* ====== Accesibilidad: reducir animaciones ====== */
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
+
+/* ====== Keyframes ====== */
+@keyframes kzFadeInUp { from {opacity:0; transform: translateY(12px);} to {opacity:1; transform: translateY(0);} }
+@keyframes kzGlowPulse {
+  0%   { text-shadow: 0 0 0 rgba(246,110,0,0.0), 0 0 0 rgba(255,255,255,0.0); }
+  100% { text-shadow: 0 0 16px rgba(246,110,0,0.70), 0 0 28px rgba(255,255,255,0.25); }
+}
+
+/* ====== Hero / Banner ====== */
+.page__hero {
+  min-height: 70vh;
+  display: flex; align-items: center; justify-content: center;
+  text-align: center;
+}
+
+.page__hero-title, .page__lead { color: #fff !important; }
+
+/* Fade-in al cargar (limitar a páginas con .kz-hero) */
+.kz-hero .page__hero        { opacity: 0; }
+.kz-loaded .kz-hero .page__hero { animation: kzFadeInUp 700ms ease-out both; }
+.kz-loaded .kz-hero .page__hero-title { animation: kzFadeInUp 800ms 80ms ease-out both; }
+.kz-loaded .kz-hero .page__lead       { animation: kzFadeInUp 900ms 140ms ease-out both; }
+
+/* Hover + glow del título */
+.kz-hero .page__hero-title {
+  transition: transform .2s ease, color .2s ease, text-shadow .2s ease;
+}
+.kz-hero .page__hero-title:hover {
+  color: #f66e00;                 /* naranja Kronos */
+  transform: translateY(-1px) scale(1.01);
+  animation: kzGlowPulse 900ms ease-in-out alternate infinite;
+}
+
+/* ====== Botones estilo gamer ====== */
+.page__hero .btn,
+.btn, .btn--primary {
+  background: transparent;
+  border: 2px solid #fff;
+  color: #fff !important;
+  font-weight: 700;
+  padding: .85rem 1.25rem;
+  border-radius: 10px;
+  box-shadow: 0 0 0 rgba(0,0,0,0);
+  transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease, color .15s ease, background .15s ease;
+}
+.page__hero .btn:hover,
+.btn:hover, .btn--primary:hover {
+  border-color: #f66e00;
+  color: #fff !important;
+  background: linear-gradient(90deg, #f66e00, #ff9a3c);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(246,110,0,.35);
+}
+
+/* ====== Navegación (toque sutil) ====== */
+.masthead, .greedy-nav {
+  backdrop-filter: saturate(120%) blur(6px);
+}
+.greedy-nav a, .site-title { font-weight: 600; }
+
+/* ====== Contenido base ====== */
+p { line-height: 1.7; font-size: 1.05rem; }
+h1, h2 { margin-top: .6rem; }
