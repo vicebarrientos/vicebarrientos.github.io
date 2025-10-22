@@ -11,14 +11,14 @@ header:
       url: "https://discord.gg/ZeYesFzdrb"
     - label: "Entrar a la Tienda"
       url: "https://tienda.kronoszone.me"
-excerpt: "IP: **mc.kronoszone.me** \nVersiones 1.8–1.20.x \n¡Eventos semanales!"
+excerpt: "**mc.kronoszone.me** \nVersiones 1.8–1.21.10 \n¡Eventos semanales!"
 ---
 
 ### ¿Qué es Kronos Zone?
 Servidor de Minecraft en español con modalidades **Survival**, **SkyPvP** y **Minijuegos**.
 
-- Anticheat propio
-- Rangos comprables en la tienda
+- Sistema de auto sanciones potenciado por IA (Kronos Eye - AntiCheat)
+- Rangos magnificos y balanceados en la tienda
 - Eventos, misiones y economía
 
 > **IP:** `mc.kronoszone.me`  
