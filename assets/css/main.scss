@@ -28,3 +28,69 @@
   background: linear-gradient(90deg, #ffae42, #f66e00);
   transform: scale(1.05);
 }
+
+/* ===== Animaciones Kronos Zone ===== */
+
+/* Accesibilidad: desactiva animaciones si el usuario lo prefiere */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Keyframes */
+@keyframes kzFadeInUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes kzTitleGlow {
+  0% {
+    text-shadow: 0 0 6px rgba(255,255,255,0.7), 0 0 18px rgba(255,255,255,0.35);
+    transform: scale(1.0);
+  }
+  100% {
+    text-shadow: 0 0 12px rgba(255,255,255,0.95), 0 0 28px rgba(255,255,255,0.5);
+    transform: scale(1.02);
+  }
+}
+
+/* ---------- Fade-in del banner y textos al cargar ---------- */
+/* Pon "classes: kz-hero" en el index.md para limitarlo solo a la home */
+.kz-hero .page__hero {
+  opacity: 0;                 /* estado inicial antes de cargar */
+  will-change: opacity, transform;
+}
+
+.kz-loaded .kz-hero .page__hero {
+  animation: kzFadeInUp 700ms ease-out both;
+}
+
+.kz-loaded .kz-hero .page__hero-title,
+.kz-loaded .kz-hero .page__lead {
+  animation: kzFadeInUp 800ms 120ms ease-out both; /* un pelín de delay */
+}
+
+/* ---------- Hover del título ---------- */
+.kz-hero .page__hero-title:hover {
+  animation: kzTitleGlow 1200ms ease-in-out infinite alternate;
+  cursor: default;
+}
+
+/* (tu estilo anterior, por si no lo tenías) */
+.page__hero {
+  min-height: 70vh;
+  display: flex; align-items: center; justify-content: center; text-align: center;
+}
+.page__hero-title, .page__lead {
+  text-align: center;
+  text-shadow: 0 0 10px rgba(255,255,255,0.8), 0 0 20px rgba(255,255,255,0.4);
+  color: #fff !important;
+}
+.page__hero .btn {
+  background: linear-gradient(90deg, #f66e00, #ff9a3c);
+  border: none; color: #fff !important; font-weight: bold;
+  transition: transform .2s ease, filter .2s ease;
+}
+.page__hero .btn:hover { transform: scale(1.05); filter: brightness(1.05); }
