@@ -1,5 +1,5 @@
 ---
-title: "Sobre nosotros"
+title: "<center>Sobre nosotros</center>"
 permalink: /sobre/
 layout: single
 classes: wide kz-hero            # 👈 activa estilos del hero + animaciones
@@ -8,7 +8,7 @@ header:
   overlay_filter: "0.45"
   overlay_image: "/assets/img/banner.jpg"   # usa tu misma imagen o otra
   overlay_style: "text-center"              # centra título + excerpt
-excerpt: "Comunidad creada por y para jugadores.<br>Servidor **estable**, **competitivo** y **divertido**."
+excerpt: "<center>Comunidad creada por y para jugadores.<br>Servidor **estable**, **competitivo** y **divertido**.</center>"
 footer_scripts:
   - /assets/js/kz.js             # 👈 dispara el fade-in (igual que en index)
 ---
