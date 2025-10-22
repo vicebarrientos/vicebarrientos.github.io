@@ -1,1 +1,10 @@
-a
+main:
+  - title: "Inicio"
+    url: /
+  - title: "Sobre nosotros"
+    url: /sobre/
+  - title: "Changelogs"
+    url: /changelogs/
+  - title: "Tienda"
+    url: "https://tienda.kronoszone.me"  # cambia al enlace real
+    external: true
