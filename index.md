@@ -9,9 +9,9 @@ header:
   overlay_filter: "0.45"
   overlay_image: "/assets/img/banner.jpg"
   actions:
-    - label: "Únete al Discord"
+    - label: "Discord"
       url: "https://discord.gg/ZeYesFzdrb"
-    - label: "Entrar a la Tienda"
+    - label: "Tienda"
       url: "https://tienda.kronoszone.me"
 excerpt: "<center><strong>mc.kronoszone.me</strong><br>Versiones <strong>1.8 – 1.21</strong><br>¡Eventos semanales y rangos premium!</center>"
 ---
