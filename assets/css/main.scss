@@ -1,0 +1,30 @@
+// ====== Estilos personalizados Kronos Zone ======
+
+.page__hero {
+  min-height: 70vh; /* 👈 aumenta la altura del banner */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.page__hero-title,
+.page__lead {
+  text-align: center;
+  text-shadow: 0 0 10px rgba(255,255,255,0.8),
+               0 0 20px rgba(255,255,255,0.4);
+  color: #fff !important;
+}
+
+.page__hero .btn {
+  background: linear-gradient(90deg, #f66e00, #ff9a3c);
+  border: none;
+  color: #fff !important;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+.page__hero .btn:hover {
+  background: linear-gradient(90deg, #ffae42, #f66e00);
+  transform: scale(1.05);
+}
