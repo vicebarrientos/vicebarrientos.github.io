@@ -8,7 +8,7 @@ header:
   overlay_filter: "0.45"
   overlay_image: "/assets/img/banner.jpg"   # usa tu misma imagen o otra
   overlay_style: "text-center"              # centra título + excerpt
-excerpt: "<center>Comunidad creada por y para jugadores.<br>Servidor **estable**, **competitivo** y **divertido**.</center>"
+excerpt: "<center>Comunidad creada por y para jugadores.<br>Servidor <strong>estable</strong>, <strong>competitivo</strong> y <strong>divertido</strong>.</center>"
 footer_scripts:
   - /assets/js/kz.js             # 👈 dispara el fade-in (igual que en index)
 ---
