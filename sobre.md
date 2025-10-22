@@ -7,10 +7,10 @@ Somos **Kronos Zone**, una comunidad creada por y para jugadores. Nuestro objeti
 servidor **estable**, **competitivo** y **divertido**.
 
 **Staff**  
-- Fundador: Vicente Barrientos
+- Fundador: SlamDunkFire
 - Admin: …  
 - Moderadores: …
 
 **Contacto**
-- Discord: https://discord.gg/tu-invite
+- Discord: https://discord.gg/ZeYesFzdrb
 - Soporte: soporte@kronoszone.me
