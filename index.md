@@ -11,7 +11,7 @@ header:
       url: "https://discord.gg/ZeYesFzdrb"
     - label: "Entrar a la Tienda"
       url: "https://tienda.kronoszone.me"
-excerpt: ""
+excerpt: "<strong>mc.kronoszone.me</strong><br>Versiones 1.8 – 1.21<br>¡Eventos semanales y rangos premium!"
 ---
 
 **mc.kronoszone.me**
