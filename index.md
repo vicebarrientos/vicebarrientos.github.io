@@ -19,8 +19,9 @@ Versiones 1.8–1.21.10
 ¡Eventos semanales!
 
 ### ¿Qué es Kronos Zone?
-Servidor de Minecraft en español con modalidades **Survival**, **SkyPvP** y **Minijuegos**.
+Servidor de Minecraft en español con modalidades **Survival**, **Arenas PVP (Coliseo)**, **Full PVP** y **Minijuegos**.
 
+### Contamos con:
 - Sistema de auto sanciones potenciado por IA (Kronos Eye - AntiCheat)
 - Rangos magnificos y balanceados en la tienda
 - Eventos, misiones y economía
