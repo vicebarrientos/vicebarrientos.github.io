@@ -1,6 +1,8 @@
 ---
 layout: single
-classes: wide
+classes: wide kz-hero
+footer_scripts:
+  - /assets/js/kz.js
 title: "<center>Bienvenido a Kronos Zone</center>"
 header:
   overlay_color: "#000"
