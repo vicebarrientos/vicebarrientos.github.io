@@ -8,7 +8,7 @@ header:
   overlay_image: "/assets/img/banner.jpg"
   actions:
     - label: "Únete al Discord"
-      url: "https://discord.gg/tu-invite"
+      url: "https://discord.gg/ZeYesFzdrb"
     - label: "Entrar a la Tienda"
       url: "https://tienda.kronoszone.me"
 excerpt: "IP: **mc.kronoszone.me** · Versiones 1.8–1.20.x · ¡Eventos semanales!"
