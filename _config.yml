@@ -1,9 +1,49 @@
 title: "Kronos Zone"
-description: "Network"
-remote_theme: pages-themes/slate@v0.2.0
+description: "Servidor Minecraft | Survival • SkyPvP • Minijuegos"
+remote_theme: "mmistakes/minimal-mistakes@4.26.2"  # tema robusto con navbar, hero, etc.
+minimal_mistakes_skin: "dark"  # prueba: default, dark, neon, air, etc.
+
+# URL de tu sitio (ajústala cuando tengas el dominio o la URL de GitHub Pages)
+url: "http://www.kronoszone.me"
+
+logo: "/assets/img/banner.jpg"  # opcional (para la cabecera compacta)
+repository: "vicebarrientos/kronos-zone"
+
+# Navegación principal (desde _data/navigation.yml)
+collections:
+  changelogs:
+    output: true
+    permalink: /changelogs/:name/
+
+# Plugins que usa el tema (GitHub Pages los soporta)
 plugins:
-  - jekyll-remote-theme
+  - jekyll-include-cache
   - jekyll-feed
   - jekyll-seo-tag
+  - jekyll-sitemap
 
-url: "http://www.kronoszone.me"
+# SEO/Meta
+author:
+  name: "Kronos Zone"
+  avatar: "/assets/img/banner.jpg"
+  bio: "Servidor Minecraft en español"
+  links:
+    - label: "Discord"
+      url: "https://discord.gg/tu-invite"
+    - label: "IP del servidor"
+      url: "#"
+
+# Opciones de layout
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "single"
+      toc: false
+  - scope:
+      path: ""
+      type: "changelogs"
+    values:
+      layout: "single"
+      toc: false
