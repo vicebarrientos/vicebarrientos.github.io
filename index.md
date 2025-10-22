@@ -11,7 +11,7 @@ header:
       url: "https://discord.gg/ZeYesFzdrb"
     - label: "Entrar a la Tienda"
       url: "https://tienda.kronoszone.me"
-excerpt: "IP: **mc.kronoszone.me** · Versiones 1.8–1.20.x · ¡Eventos semanales!"
+excerpt: "IP: **mc.kronoszone.me** \nVersiones 1.8–1.20.x \n¡Eventos semanales!"
 ---
 
 ### ¿Qué es Kronos Zone?
