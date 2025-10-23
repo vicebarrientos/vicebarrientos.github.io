@@ -90,3 +90,16 @@ p, a, li, input, textarea, button, .page__lead {
 /* ====== Contenido base ====== */
 p { line-height: 1.7; font-size: 1.05rem; }
 h1, h2 { margin-top: .6rem; }
+
+/* === Forzar Centrad0 === */
+.page__hero,
+.page__hero-title,
+.page__lead,
+.page__hero .page__content,
+.page__hero .page__actions {
+  text-align: center !important;
+  justify-content: center !important;
+  align-items: center !important;
+  display: flex;
+  flex-direction: column;
+}
