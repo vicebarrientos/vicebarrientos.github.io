@@ -31,8 +31,8 @@ classes: wide
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-  const SUPABASE_URL = "TU_SUPABASE_URL";
-  const SUPABASE_ANON = "TU_SUPABASE_ANON_KEY";
+  const SUPABASE_URL = "https://azcjmmgblcohyzrzsqtr.supabase.co";
+  const SUPABASE_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF6Y2ptbWdibGNvaHl6cnpzcXRyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjExNTA5ODIsImV4cCI6MjA3NjcyNjk4Mn0.774kuEsyQouXklSW0DvLU44u0u7umH9x1f4tERC-YOk";
   const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
 
   const authBox = document.getElementById('auth');
