@@ -42,21 +42,26 @@ classes: wide
   </div>
   <button type="submit" class="btn btn--primary">Enviar reporte</button>
   <p id="report-msg"></p>
+  <pre id="report-debug" style="white-space:pre-wrap;font-size:.9rem;opacity:.8"></pre>
 </form>
 
-<script src="https://esm.sh/@supabase/supabase-js@2"></script>
+<!-- SDK correcto para navegador -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-  const supabaseUrl = "https://azcjmmgblcohyzrzsqtr.supabase.co";
-  const supabaseAnon = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF6Y2ptbWdibGNvaHl6cnpzcXRyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjExNTA5ODIsImV4cCI6MjA3NjcyNjk4Mn0.774kuEsyQouXklSW0DvLU44u0u7umH9x1f4tERC-YOk";
-  const sb = supabase.createClient(supabaseUrl, supabaseAnon);
+  const SUPABASE_URL = "TU_SUPABASE_URL";
+  const SUPABASE_ANON = "TU_SUPABASE_ANON_KEY";
+  const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
 
   const form = document.getElementById('report-form');
   const msg  = document.getElementById('report-msg');
+  const dbg  = document.getElementById('report-debug');
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     msg.textContent = "Enviando...";
-    const data = {
+    dbg.textContent = "";
+
+    const payload = {
       player_nick: document.getElementById('player_nick').value.trim(),
       player_email: document.getElementById('player_email').value.trim(),
       category: document.getElementById('category').value,
@@ -64,12 +69,20 @@ classes: wide
       description: document.getElementById('description').value.trim(),
       evidence_url: document.getElementById('evidence_url').value.trim() || null
     };
-    const { error } = await sb.from('reports').insert(data);
-    if (error) {
-      msg.textContent = "Error al enviar: " + error.message;
-    } else {
-      msg.textContent = "¡Reporte enviado! Gracias por tu ayuda.";
-      form.reset();
+
+    try {
+      const { data, error } = await sb.from('reports').insert(payload).select('id');
+      if (error) {
+        msg.textContent = "❌ Error al enviar";
+        dbg.textContent = error.message;
+      } else {
+        msg.textContent = "✅ ¡Reporte enviado! Gracias por tu ayuda.";
+        dbg.textContent = "ID: " + data[0].id;
+        form.reset();
+      }
+    } catch (err) {
+      msg.textContent = "❌ Error inesperado";
+      dbg.textContent = String(err);
     }
   });
 </script>
