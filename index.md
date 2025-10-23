@@ -13,7 +13,9 @@ header:
       url: "https://discord.gg/ZeYesFzdrb"
     - label: "Tienda"
       url: "https://tienda.kronoszone.me"
-excerpt: "<strong>mc.kronoszone.me</strong><br>Versiones <strong>1.8 – 1.21</strong><br>¡Eventos semanales y rangos premium!"
+    - label: "Reportes"
+      url: "https://www.kronoszone.me/reportes"
+excerpt: "<center><strong>mc.kronoszone.me</strong><br>Versiones <strong>1.8 – 1.21</strong><br>¡Eventos semanales y rangos V.I.Ps</center>"
 ---
 
 ### ¿Qué es Kronos Zone?
