@@ -1,5 +1,5 @@
 title: "Kronos Zone"
-description: "Servidor Minecraft | Survival • SkyPvP • Minijuegos"
+description: "Servidor Minecraft | Servidor competitivo"
 remote_theme: "mmistakes/minimal-mistakes@4.26.2"  # tema robusto con navbar, hero, etc.
 minimal_mistakes_skin: "dark"  # prueba: default, dark, neon, air, etc.
 
@@ -7,7 +7,7 @@ minimal_mistakes_skin: "dark"  # prueba: default, dark, neon, air, etc.
 url: "http://www.kronoszone.me"
 baseurl: ""
 
-logo: "/assets/img/banner.jpg"  # opcional (para la cabecera compacta)
+logo: "/assets/img/logo2.png"  # opcional (para la cabecera compacta)
 repository: "vicebarrientos/vicebarrientos.github.io"
 
 # Navegación principal (desde _data/navigation.yml)
@@ -26,7 +26,7 @@ plugins:
 # SEO/Meta
 author:
   name: "Kronos Zone"
-  avatar: "/assets/img/banner.jpg"
+  avatar: "/assets/img/logo2.png"
   bio: "Servidor Minecraft en español"
   links:
     - label: "Discord"
