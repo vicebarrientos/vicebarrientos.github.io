@@ -8,7 +8,6 @@ header:
   overlay_color: "#000"
   overlay_filter: "0.45"
   overlay_image: "/assets/img/banner.jpg"
-  overlay_style: "text-center"
   actions:
     - label: "Discord"
       url: "https://discord.gg/ZeYesFzdrb"
