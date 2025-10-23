@@ -8,12 +8,13 @@ header:
   overlay_color: "#000"
   overlay_filter: "0.45"
   overlay_image: "/assets/img/banner.jpg"
+  overlay_style: "text-center"
   actions:
-    - label: "<center>Discord"
+    - label: "Discord"
       url: "https://discord.gg/ZeYesFzdrb"
-    - label: "Tienda</center>"
+    - label: "Tienda"
       url: "https://tienda.kronoszone.me"
-excerpt: "<center><strong>mc.kronoszone.me</strong><br>Versiones <strong>1.8 – 1.21</strong><br>¡Eventos semanales y rangos premium!</center>"
+excerpt: "<strong>mc.kronoszone.me</strong><br>Versiones <strong>1.8 – 1.21</strong><br>¡Eventos semanales y rangos premium!"
 ---
 
 ### ¿Qué es Kronos Zone?
