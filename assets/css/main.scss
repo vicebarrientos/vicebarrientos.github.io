@@ -90,24 +90,3 @@ p, a, li, input, textarea, button, .page__lead {
 /* ====== Contenido base ====== */
 p { line-height: 1.7; font-size: 1.05rem; }
 h1, h2 { margin-top: .6rem; }
-
-/* === Forzar Centrad0 === */
-.page__hero {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  min-height: 100vh;
-  padding: 0;
-  margin: 0;
-}
-
-.page__hero-title, .page__lead, .page__hero .page__actions {
-  margin: 0.5rem 0;
-}
-
-.page__hero-title, .page__lead {
-  text-shadow: 0 0 8px rgba(255,255,255,0.4);
-}
