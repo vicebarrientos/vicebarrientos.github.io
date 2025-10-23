@@ -16,7 +16,7 @@ header:
 excerpt: "<center><strong>mc.kronoszone.me</strong><br>Versiones <strong>1.8 – 1.21</strong><br>¡Eventos semanales y rangos premium!</center>"
 ---
 
-<h1><center>¿Qué es Kronos Zone?<center></center><h1>
+### ¿Qué es Kronos Zone?
 Servidor de Minecraft en español con modalidades **Survival**, **Arenas PVP (Coliseo)**, **Full PVP** y **Minijuegos**.
 
 ### Contamos con:
