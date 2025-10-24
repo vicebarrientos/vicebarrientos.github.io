@@ -31,24 +31,25 @@ classes: wide
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-  const SUPABASE_URL = "https://azcjmmgblcohyzrzsqtr.supabase.co";
-  const SUPABASE_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF6Y2ptbWdibGNvaHl6cnpzcXRyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjExNTA5ODIsImV4cCI6MjA3NjcyNjk4Mn0.774kuEsyQouXklSW0DvLU44u0u7umH9x1f4tERC-YOk";
+  const SUPABASE_URL = "TU_SUPABASE_URL";
+  const SUPABASE_ANON = "TU_SUPABASE_ANON_KEY";
   const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
+
+  let currentUser = null;
 
   const authBox = document.getElementById('auth');
   const panel   = document.getElementById('panel');
   const list    = document.getElementById('list');
   const statusFilter = document.getElementById('statusFilter');
   const aMsg    = document.getElementById('auth-msg');
-  const dbg     = document.getElementById('admin-debug');
 
   document.getElementById('login').onclick = async () => {
     aMsg.textContent = "Ingresando...";
-    dbg.textContent = "";
     const email = document.getElementById('email').value.trim();
     const password = document.getElementById('password').value.trim();
     const { data, error } = await sb.auth.signInWithPassword({ email, password });
     if (error) { aMsg.textContent = "❌ " + error.message; return; }
+    currentUser = data.user;
     aMsg.textContent = "";
     authBox.style.display='none';
     panel.style.display='block';
@@ -60,7 +61,6 @@ classes: wide
 
   async function load() {
     list.textContent = 'Cargando...';
-    dbg.textContent = '';
     let q = sb.from('reports').select('*').order('created_at', { ascending:false });
     if (statusFilter.value) q = q.eq('status', statusFilter.value);
     const { data, error } = await q;
@@ -73,11 +73,11 @@ classes: wide
     return `
       <div class="card" data-id="${r.id}">
         <h4>${r.category} — <small>${new Date(r.created_at).toLocaleString()}</small></h4>
-        <p><b>Nick:</b> ${r.player_nick} · <b>Email:</b> ${r.player_email}</p>
+        <p><b>Nick:</b> ${r.player_nick} · <b>Email:</b> <span class="email">${r.player_email}</span></p>
         <p><b>Modo:</b> ${r.server_mode} · <b>Estado:</b> <span class="status">${r.status}</span></p>
         ${r.evidence_url ? `<p><b>Evidencia:</b> <a href="${r.evidence_url}" target="_blank">${r.evidence_url}</a></p>` : ''}
         <p>${r.description.replaceAll('<','&lt;')}</p>
-        ${r.admin_reply ? `<p><b>Respuesta:</b> ${r.admin_reply}</p>` : ''}
+        ${r.admin_reply ? `<p><b>Última respuesta:</b> ${r.admin_reply} <small>(${r.replied_at ?? ''})</small></p>` : ''}
         <div class="actions">
           <select class="set-status">
             <option value="">Cambiar estado…</option>
@@ -86,6 +86,7 @@ classes: wide
             <option>resuelto</option>
             <option>archivado</option>
           </select>
+          <button class="reply">Responder (email)</button>
           <button class="delete">Eliminar</button>
         </div>
       </div>`;
@@ -111,6 +112,40 @@ classes: wide
         const { error } = await sb.from('reports').delete().eq('id', card.dataset.id);
         if (error) alert('❌ ' + error.message);
         else card.remove();
+      };
+    });
+
+    document.querySelectorAll('.reply').forEach(btn => {
+      btn.onclick = async (e) => {
+        const card = e.target.closest('.card');
+        const id = card.dataset.id;
+        const email = card.querySelector('.email').textContent.trim();
+        const subject = prompt('Asunto del correo:', 'Respuesta a tu reporte — Kronos Zone');
+        if (!subject) return;
+        const message = prompt('Mensaje (puedes usar saltos de línea):', '¡Gracias por tu reporte! Hemos tomado acción.');
+        if (!message) return;
+
+        // Estado post-respuesta (puedes cambiarlo a 'resuelto' o 'en_progreso')
+        const nextStatus = confirm('¿Marcar como RESUELTO? Aceptar=Sí / Cancelar=No') ? 'resuelto' : undefined;
+
+        const { error } = await sb.functions.invoke('send-reply', {
+          body: {
+            to: email,
+            subject,
+            message,
+            report_id: id,
+            status: nextStatus,
+            replied_by: currentUser?.email || 'admin'
+          }
+        });
+
+        if (error) alert('❌ ' + error.message);
+        else {
+          alert('✅ Correo enviado');
+          if (nextStatus) card.querySelector('.status').textContent = nextStatus;
+          // (Opcional) recargar para ver admin_reply/replied_at actualizados
+          load();
+        }
       };
     });
   }
