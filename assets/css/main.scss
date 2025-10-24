@@ -81,6 +81,19 @@ p, a, li, input, textarea, button, .page__lead {
   box-shadow: 0 8px 20px rgba(246,110,0,.35);
 }
 
+.card{
+  background:#1f242c;
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:12px;
+  padding:1rem 1.2rem;
+  margin:0 0 1rem 0;
+}
+.card .actions{ display:flex; gap:.5rem; flex-wrap:wrap; margin-top:.5rem; }
+.card .status{
+  padding:.08rem .5rem; border-radius:6px; margin-left:.25rem;
+  background:#2a313b; font-weight:600;
+}
+
 /* ====== Navegación (toque sutil) ====== */
 .masthead, .greedy-nav {
   backdrop-filter: saturate(120%) blur(6px);
