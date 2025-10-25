@@ -17,7 +17,7 @@ classes: wide
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-  const sb = supabase.createClient("TU_SUPABASE_URL","TU_SUPABASE_ANON_KEY");
+  const sb = supabase.createClient("TU_SUPABASE_URL","eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF6Y2ptbWdibGNvaHl6cnpzcXRyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjExNTA5ODIsImV4cCI6MjA3NjcyNjk4Mn0.774kuEsyQouXklSW0DvLU44u0u7umH9x1f4tERC-YOk");
   const f = document.getElementById('ticket-form'), msg=document.getElementById('msg'), dbg=document.getElementById('dbg');
   f.addEventListener('submit', async (e)=>{
     e.preventDefault(); msg.textContent="Enviando..."; dbg.textContent="";
