@@ -199,13 +199,14 @@ classes: wide
 
         const { error } = await sb.functions.invoke('send-reply', {
           body: {
-            to: email,
-            subject, message,
-            report_id: id,
-            table: (table),
-            status: nextStatus,
-            replied_by: myProfile.username,
-            from_alias: document.getElementById('fromAlias').value
+            to: email,                          // del registro
+            subject,
+            message,
+            report_id: id,                      // UUID del registro
+            table: (table),                     // "reports" o "support_tickets"
+            status: nextStatus,                 // opcional: "en_progreso"/"cerrado"
+            replied_by: myProfile.username,     // nombre del staff
+            from_alias: document.getElementById('fromAlias').value // "soporte" | "administracion"
           }
         });
         if (error) alert('❌ '+error.message); else { alert('✅ Enviado'); load(); }
