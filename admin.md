@@ -1,253 +1,313 @@
 ---
-title: "Panel de Reportes"
+title: "Portal Staff"
 permalink: /admin/
 layout: single
 classes: wide
 ---
 
-<div id="auth" style="margin-bottom:1rem">
-  <h3>Acceso Staff</h3>
-  <div>
-    <button id="show-login" class="btn">Login</button>
-    <button id="show-register" class="btn">Registro</button>
+<style>
+/* ====== Estilos del panel ====== */
+.kz-auth-wrap{
+  max-width: 860px; margin: 0 auto; padding: 24px;
+}
+.kz-row{display:flex; gap:20px; align-items:stretch; flex-wrap:wrap;}
+.kz-card{
+  flex:1 1 360px; background:#1f242c; border:1px solid rgba(255,255,255,.08);
+  border-radius:16px; padding:24px;
+  box-shadow: 0 15px 40px rgba(0,0,0,.25);
+}
+.kz-card h3{margin:0 0 10px 0;}
+.kz-input, .kz-select, .kz-btn{
+  width:100%; border-radius:12px; border:1px solid rgba(255,255,255,.12);
+  background:#0f1320; color:#fff; padding:12px 14px; margin-top:10px;
+}
+.kz-btn{background:#ff9a3c; color:#1b1f2a; font-weight:700; cursor:pointer; border:none;}
+.kz-btn.sec{background:#2a3140; color:#fff;}
+.kz-muted{opacity:.8; font-size:.95rem}
+.kz-error{color:#ff6b6b; margin-top:10px}
+.kz-ok{color:#74d99f; margin-top:10px}
+.kz-topbar{display:flex; align-items:center; gap:10px; justify-content:space-between; margin-bottom:16px}
+.kz-tabs{display:flex; gap:8px; flex-wrap:wrap;}
+.kz-tab{border:none; background:#2a3140; color:#fff; padding:8px 12px; border-radius:10px; cursor:pointer}
+.kz-tab.active{background:#ff9a3c; color:#1b1f2a; font-weight:700}
+.kz-toolbar{display:flex; gap:10px; align-items:center; margin:12px 0}
+.kz-list .kz-item{background:#151a24; border:1px solid rgba(255,255,255,.08); border-radius:14px; padding:14px; margin:10px 0}
+.kz-item h4{margin:0 0 6px 0}
+.kz-actions{display:flex; gap:8px; flex-wrap:wrap; margin-top:8px}
+.kz-badge{display:inline-block; padding:2px 8px; border-radius:999px; font-size:.8rem; border:1px solid rgba(255,255,255,.15)}
+.kz-badge.gray{background:#2a3140}
+.kz-badge.yellow{background:#ff9a3c; color:#1b1f2a; font-weight:700}
+.kz-badge.green{background:#63e6be; color:#103520; font-weight:700}
+</style>
+
+<div class="kz-auth-wrap" id="screen-auth">
+  <div class="kz-row">
+    <div class="kz-card">
+      <h3 style="text-align:center;margin-bottom:4px">Login</h3>
+      <p class="kz-muted" style="text-align:center;margin:0">Solo personal aprobado</p>
+      <input id="login-email" class="kz-input" placeholder="Correo">
+      <input id="login-pass" class="kz-input" type="password" placeholder="Contraseña">
+      <button id="btn-login" class="kz-btn" style="margin-top:14px">Entrar</button>
+      <p id="login-msg" class="kz-error"></p>
+      <p class="kz-muted" style="margin-top:8px">¿No tienes cuenta? <a href="#!" id="go-register">Regístrate</a></p>
+    </div>
+
+    <div class="kz-card" id="card-register" style="display:none">
+      <h3 style="text-align:center;margin-bottom:4px">Registro</h3>
+      <p class="kz-muted" style="text-align:center;margin:0">Tu cuenta quedará en revisión</p>
+      <input id="r-username" class="kz-input" placeholder="Nombre de cuenta (username)">
+      <input id="r-email" class="kz-input" placeholder="Correo">
+      <input id="r-pass" class="kz-input" type="password" placeholder="Contraseña">
+      <select id="r-role" class="kz-select">
+        <option value="mod">Mod</option>
+        <option value="mod_plus">Mod+</option>
+        <option value="admin">Admin</option>
+        <option value="admin_plus">Admin+</option>
+      </select>
+      <button id="btn-register" class="kz-btn" style="margin-top:14px">Crear cuenta</button>
+      <p id="register-msg" class="kz-error"></p>
+      <p class="kz-muted" style="margin-top:8px"><a href="#!" id="go-login">Volver a Login</a></p>
+    </div>
   </div>
-  <div id="login-box" style="margin-top:.5rem">
-    <input id="email" type="email" placeholder="correo">
-    <input id="password" type="password" placeholder="contraseña">
-    <button id="login" class="btn btn--primary">Ingresar</button>
-  </div>
-  <div id="register-box" style="display:none; margin-top:.5rem">
-    <input id="r-username" placeholder="username (único)">
-    <input id="r-email" type="email" placeholder="correo">
-    <input id="r-password" type="password" placeholder="contraseña">
-    <select id="r-role">
-      <option value="mod">Mod</option>
-      <option value="mod_plus">Mod+</option>
-      <option value="admin">Admin</option>
-      <option value="admin_plus">Admin+</option>
-    </select>
-    <button id="register" class="btn btn--primary">Crear cuenta</button>
-  </div>
-  <p id="auth-msg"></p>
 </div>
 
-<div id="panel" style="display:none">
-  <div style="display:flex;gap:8px;align-items:center">
-    <strong id="whoami"></strong>
-    <button id="logout" class="btn">Salir</button>
+<div class="kz-auth-wrap" id="screen-panel" style="display:none">
+  <div class="kz-topbar">
+    <div><strong id="whoami"></strong> <span id="myrole" class="kz-badge gray"></span></div>
+    <div>
+      <select id="fromAlias" class="kz-select" style="width:auto;display:inline-block">
+        <option value="soporte">Enviar como soporte@</option>
+        <option value="administracion">Enviar como administracion@</option>
+      </select>
+      <button id="btn-logout" class="kz-btn sec">Salir</button>
+    </div>
   </div>
 
-  <!-- Pestañas tipo inbox -->
-  <div style="margin:1rem 0; display:flex; gap:.5rem;">
-    <button class="tab btn btn--primary" data-tab="reports">Reportes</button>
-    <button class="tab btn" data-tab="support">Soporte</button>
-    <button class="tab btn" data-tab="users">Usuarios</button>
+  <div class="kz-tabs">
+    <button class="kz-tab active" data-tab="reports">Reportes</button>
+    <button class="kz-tab" data-tab="support">Soporte</button>
+    <button class="kz-tab" data-tab="users">Usuarios</button>
   </div>
 
-  <!-- Controles comunes -->
-  <div id="toolbar" style="display:flex; gap:.5rem; align-items:center; margin-bottom:.5rem">
-    <select id="statusFilter">
+  <div class="kz-toolbar">
+    <select id="statusFilter" class="kz-select" style="width:auto">
       <option value="">Todos</option>
       <option value="sin_leer">Sin leer</option>
       <option value="en_progreso">En progreso</option>
       <option value="cerrado">Cerrado</option>
     </select>
-    <button id="reload">Recargar</button>
-    <select id="fromAlias">
-      <option value="soporte">Enviar como soporte@</option>
-      <option value="administracion">Enviar como administracion@</option>
-    </select>
+    <button id="btn-reload" class="kz-btn sec">Recargar</button>
   </div>
 
-  <div id="list"></div>
-  <pre id="dbg" style="white-space:pre-wrap;font-size:.9rem;opacity:.7"></pre>
+  <div id="list" class="kz-list"></div>
+  <p id="panel-msg" class="kz-error"></p>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-  const sb = supabase.createClient("TU_SUPABASE_URL","TU_SUPABASE_ANON_KEY");
-  const authMsg = document.getElementById('auth-msg');
-  const panel = document.getElementById('panel');
-  const list  = document.getElementById('list');
-  const dbg   = document.getElementById('dbg');
-  const who   = document.getElementById('whoami');
-  const statusFilter = document.getElementById('statusFilter');
-  const fromAlias = document.getElementById('fromAlias');
-  let currentUser=null, currentTab='reports', myProfile=null;
+const sb = supabase.createClient("TU_SUPABASE_URL","TU_SUPABASE_ANON_KEY");
 
-  // toggles
-  document.getElementById('show-login').onclick = ()=>{document.getElementById('login-box').style.display='block';document.getElementById('register-box').style.display='none';}
-  document.getElementById('show-register').onclick = ()=>{document.getElementById('login-box').style.display='none';document.getElementById('register-box').style.display='block';}
+// refs
+const scrAuth  = document.getElementById('screen-auth');
+const scrPanel = document.getElementById('screen-panel');
+const loginMsg = document.getElementById('login-msg');
+const regMsg   = document.getElementById('register-msg');
+const panelMsg = document.getElementById('panel-msg');
+const who      = document.getElementById('whoami');
+const myrole   = document.getElementById('myrole');
+const statusFilter = document.getElementById('statusFilter');
+const listEl   = document.getElementById('list');
+let currentUser=null, myProfile=null, currentTab='reports';
 
-  // registro (crea auth user + fila en staff_profiles con approved=false)
-  document.getElementById('register').onclick = async ()=>{
-    authMsg.textContent="Creando cuenta...";
-    const email = document.getElementById('r-email').value.trim();
-    const password = document.getElementById('r-password').value.trim();
-    const username = document.getElementById('r-username').value.trim();
-    const role = document.getElementById('r-role').value;
-    try{
-      const { data, error } = await sb.auth.signUp({ email, password });
-      if (error) throw error;
-      // crea perfil
-      const { error: e2 } = await sb.from('staff_profiles').insert({
-        user_id: data.user.id, username, role, approved: false
-      });
-      if (e2) throw e2;
-      authMsg.textContent="✅ Cuenta creada. Espera aprobación de un Admin.";
-    }catch(err){ authMsg.textContent="❌ "+(err.message||err); }
-  };
+document.getElementById('go-register').onclick = ()=>{document.getElementById('card-register').style.display='block'}
+document.getElementById('go-login').onclick    = ()=>{document.getElementById('card-register').style.display='none'}
 
-  // login
-  document.getElementById('login').onclick = async ()=>{
-    authMsg.textContent="Ingresando...";
-    const email = document.getElementById('email').value.trim();
-    const password = document.getElementById('password').value.trim();
-    const { data, error } = await sb.auth.signInWithPassword({ email, password });
-    if (error) { authMsg.textContent="❌ "+error.message; return; }
-    currentUser = data.user;
-    await afterLogin();
-  };
+document.getElementById('btn-login').onclick = async ()=>{
+  loginMsg.textContent='';
+  const email = document.getElementById('login-email').value.trim();
+  const password = document.getElementById('login-pass').value.trim();
+  const { data, error } = await sb.auth.signInWithPassword({ email, password });
+  if (error){ loginMsg.textContent = error.message; return; }
+  currentUser = data.user;
+  await afterLogin();
+};
 
-  async function afterLogin(){
-    // buscar perfil
-    const { data: prof, error: e1 } = await sb.from('staff_profiles').select('*').eq('user_id', currentUser.id).single();
-    if (e1){ authMsg.textContent="❌ "+e1.message; return; }
-    myProfile = prof;
-    if (!prof.approved){ authMsg.textContent="⚠️ Tu cuenta está pendiente de aprobación."; return; }
-    document.getElementById('auth').style.display='none';
-    panel.style.display='block';
-    who.textContent = `${prof.username} (${prof.role})`;
-    load();
-  }
+document.getElementById('btn-register').onclick = async ()=>{
+  regMsg.textContent='';
+  const email = document.getElementById('r-email').value.trim();
+  const password = document.getElementById('r-pass').value.trim();
+  const username = document.getElementById('r-username').value.trim();
+  const role = document.getElementById('r-role').value;
+  try{
+    const { data, error } = await sb.auth.signUp({ email, password });
+    if (error) throw error;
+    const uid = data.user?.id;
+    const { error: e2 } = await sb.from('staff_profiles')
+      .insert({ user_id: uid, email, username, role, approved: false });
+    if (e2) throw e2;
+    regMsg.className='kz-ok';
+    regMsg.textContent='✅ Cuenta creada. Espera aprobación de un Admin.';
+  }catch(err){ regMsg.className='kz-error'; regMsg.textContent=err.message || String(err); }
+};
 
-  document.getElementById('logout').onclick = async ()=>{ await sb.auth.signOut(); location.reload(); };
+document.getElementById('btn-logout').onclick = async ()=>{
+  await sb.auth.signOut(); location.reload();
+};
 
-  // pestañas
-  document.querySelectorAll('.tab').forEach(btn=>{
-    btn.onclick=()=>{ document.querySelectorAll('.tab').forEach(b=>b.classList.remove('btn--primary')); btn.classList.add('btn--primary'); currentTab=btn.dataset.tab; load(); }
+async function afterLogin(){
+  // perfil
+  const { data: prof, error } = await sb.from('staff_profiles')
+    .select('*').eq('user_id', currentUser.id).maybeSingle();
+  if (error){ loginMsg.textContent = error.message; return; }
+  if (!prof){ loginMsg.textContent = 'Tu cuenta no tiene perfil de staff. Regístrate primero.'; return; }
+  if (!prof.approved){ loginMsg.textContent = 'Tu cuenta está pendiente de aprobación.'; return; }
+
+  myProfile = prof;
+  who.textContent = prof.username;
+  myrole.textContent = prof.role;
+
+  scrAuth.style.display='none';
+  scrPanel.style.display='block';
+  load();
+}
+
+document.querySelectorAll('.kz-tab').forEach(btn=>{
+  btn.onclick=()=>{ document.querySelectorAll('.kz-tab').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active'); currentTab=btn.dataset.tab; load(); }
+});
+document.getElementById('btn-reload').onclick=load;
+statusFilter.onchange=load;
+
+async function load(){
+  panelMsg.textContent=''; listEl.innerHTML='Cargando...';
+  try{
+    if (currentTab==='users'){ return loadUsers(); }
+    const table = currentTab==='support' ? 'support_tickets' : 'reports';
+    let q = sb.from(table).select('*').order('created_at',{ascending:false});
+    if (statusFilter.value) q = q.eq('status', statusFilter.value);
+    const { data, error } = await q;
+    if (error) throw error;
+    listEl.innerHTML = data.map(renderItem).join('');
+    bindActions(table);
+  }catch(err){ listEl.innerHTML=''; panelMsg.textContent = err.message || String(err); }
+}
+
+function renderItem(r){
+  const statusClass = r.status==='cerrado' ? 'green' : (r.status==='en_progreso' ? 'yellow':'gray');
+  return `
+    <div class="kz-item" data-id="${r.id}">
+      <h4>${r.status.toUpperCase()} <span class="kz-badge ${statusClass}">${r.status}</span></h4>
+      <div class="kz-muted">${new Date(r.created_at).toLocaleString()}</div>
+      ${r.reporter_nick ? `<p><b>${r.reporter_nick}</b> reportó a <b>${r.accused_nick}</b></p>` : `<p><b>${r.nick}</b> envió un ticket</p>`}
+      <p><b>Email:</b> <span class="kz-email">${r.player_email||r.email}</span></p>
+      ${r.mode ? `<p><b>Modo:</b> ${r.mode} · <b>Tipo:</b> ${r.rtype}</p>` : `<p><b>Tipo:</b> ${r.question_type||r.ttype||''}</p>`}
+      ${r.evidence_url ? `<p><b>Evidencia:</b> <a target="_blank" href="${r.evidence_url}">${r.evidence_url}</a></p>`:''}
+      <p>${(r.description||'').replaceAll('<','&lt;')}</p>
+      ${r.updated_by_name ? `<p class="kz-muted">Último cambio: ${r.updated_by_name}</p>`:''}
+      <div class="kz-actions">
+        <select class="kz-select set-status" style="width:auto">
+          <option value="">Cambiar estado…</option>
+          <option value="sin_leer">Sin leer</option>
+          <option value="en_progreso">En progreso</option>
+          <option value="cerrado">Cerrado</option>
+        </select>
+        <button class="kz-btn reply">Responder</button>
+        <button class="kz-btn sec del">Eliminar</button>
+      </div>
+    </div>
+  `;
+}
+
+function bindActions(table){
+  document.querySelectorAll('.set-status').forEach(sel=>{
+    sel.onchange = async (e)=>{
+      const id = e.target.closest('.kz-item').dataset.id;
+      const status = e.target.value; if(!status) return;
+      const { error } = await sb.from(table).update({
+        status, updated_by: currentUser.id, updated_by_name: myProfile.username
+      }).eq('id', id);
+      if (error) alert(error.message); else load();
+    };
   });
 
-  document.getElementById('reload').onclick=load;
-  statusFilter.onchange=load;
+  document.querySelectorAll('.del').forEach(btn=>{
+    btn.onclick = async (e)=>{
+      const id = e.target.closest('.kz-item').dataset.id;
+      if (!confirm('¿Eliminar?')) return;
+      const { error } = await sb.from(table).delete().eq('id', id);
+      if (error) alert(error.message); else load();
+    };
+  });
 
-  async function load(){
-    list.textContent='Cargando...'; dbg.textContent='';
-    try{
-      if (currentTab==='users') { await loadUsers(); return; }
-      const table = currentTab==='reports' ? 'reports' : 'support_tickets';
-      let q = sb.from(table).select('*').order('created_at',{ascending:false});
-      if (statusFilter.value) q = q.eq('status', statusFilter.value);
-      const { data, error } = await q;
-      if (error) throw error;
-      list.innerHTML = data.map(render).join('');
-      bindActions(table);
-    }catch(err){ list.textContent='❌ '+(err.message||err); }
-  }
+  document.querySelectorAll('.reply').forEach(btn=>{
+    btn.onclick = async (e)=>{
+      const card = e.target.closest('.kz-item');
+      const id = card.dataset.id;
+      const email = card.querySelector('.kz-email').textContent.trim();
+      const subject = prompt('Asunto','Kronos Zone — Respuesta');
+      if (!subject) return;
+      const message = prompt('Mensaje','Gracias por tu reporte. Estamos revisando.');
+      if (!message) return;
+      const nextStatus = confirm('¿Marcar EN PROGRESO? Aceptar=Sí / Cancelar=No') ? 'en_progreso' : undefined;
 
-  function render(r){
-    return `
-      <div class="card" data-id="${r.id}">
-        <h4>${r.status.toUpperCase()} — <small>${new Date(r.created_at).toLocaleString()}</small></h4>
-        ${r.reporter_nick ? `<p><b>Reporte de:</b> ${r.reporter_nick} → <b>Acusado:</b> ${r.accused_nick}</p>` : `<p><b>Ticket de:</b> ${r.nick}</p>`}
-        <p><b>Email:</b> <span class="email">${r.player_email||r.email}</span></p>
-        ${r.mode ? `<p><b>Modo:</b> ${r.mode} · <b>Tipo:</b> ${r.rtype}</p>` : `<p><b>Tipo:</b> ${r.ttype}</p>`}
-        ${r.evidence_url ? `<p><b>Evidencia:</b> <a href="${r.evidence_url}" target="_blank">${r.evidence_url}</a></p>` : ``}
-        <p>${(r.description||'').replaceAll('<','&lt;')}</p>
-        ${r.updated_by_name ? `<p><small>Último cambio por: ${r.updated_by_name}</small></p>` : ``}
-        <div class="actions">
-          <select class="set-status">
-            <option value="">Cambiar estado…</option>
-            <option value="sin_leer">Sin leer</option>
-            <option value="en_progreso">En progreso</option>
-            <option value="cerrado">Cerrado</option>
-          </select>
-          <button class="reply">Responder (email)</button>
-          <button class="delete">Eliminar</button>
-        </div>
-      </div>`;
-  }
+      const { error } = await sb.functions.invoke('send-reply',{
+        body:{
+          to: email,
+          subject, message,
+          report_id: id,
+          table: table,
+          status: nextStatus,
+          replied_by: myProfile.username,
+          from_alias: document.getElementById('fromAlias').value
+        }
+      });
+      if (error) alert(error.message); else { alert('Enviado'); load(); }
+    };
+  });
+}
 
-  function bindActions(table){
-    document.querySelectorAll('.set-status').forEach(sel=>{
-      sel.onchange = async (e)=>{
-        const card = e.target.closest('.card'); const id=card.dataset.id; const status=e.target.value;
-        if (!status) return;
-        const patch = { status, updated_by: currentUser.id, updated_by_name: myProfile.username };
-        const { error } = await sb.from(table).update(patch).eq('id', id);
-        if (error) alert('❌ '+error.message); else load();
-      };
-    });
-    document.querySelectorAll('.delete').forEach(btn=>{
-      btn.onclick = async (e)=>{
-        const card=e.target.closest('.card');
-        if (!confirm('¿Eliminar?')) return;
-        const { error } = await sb.from(table).delete().eq('id', card.dataset.id);
-        if (error) alert('❌ '+error.message); else card.remove();
-      }
-    });
-    document.querySelectorAll('.reply').forEach(btn=>{
-      btn.onclick = async (e)=>{
-        const card = e.target.closest('.card');
-        const id = card.dataset.id;
-        const email = card.querySelector('.email').textContent.trim();
-        const subject = prompt('Asunto:', 'Kronos Zone — Respuesta a tu caso');
-        if (!subject) return;
-        const message = prompt('Mensaje:','¡Gracias por tu reporte! Hemos tomado acción.');
-        if (!message) return;
-        const nextStatus = confirm('¿Marcar como EN PROCESO? Aceptar=Sí · Cancelar=No') ? 'en_progreso' : undefined;
+async function loadUsers(){
+  // solo admin/admin_plus
+  const { data: me } = await sb.from('staff_profiles').select('role').eq('user_id', currentUser.id).single();
+  if (!me || !['admin','admin_plus'].includes(me.role)){ listEl.innerHTML='Solo Admin'; return; }
 
-        const { error } = await sb.functions.invoke('send-reply', {
-          body: {
-            to: email,                          // del registro
-            subject,
-            message,
-            report_id: id,                      // UUID del registro
-            table: (table),                     // "reports" o "support_tickets"
-            status: nextStatus,                 // opcional: "en_progreso"/"cerrado"
-            replied_by: myProfile.username,     // nombre del staff
-            from_alias: document.getElementById('fromAlias').value // "soporte" | "administracion"
-          }
-        });
-        if (error) alert('❌ '+error.message); else { alert('✅ Enviado'); load(); }
-      };
-    });
-  }
+  const { data, error } = await sb.from('staff_profiles').select('*').order('created_at',{ascending:false});
+  if (error){ listEl.innerHTML='Error cargando usuarios'; return; }
 
-  async function loadUsers(){
-    // Solo admins pueden ver
-    const { data: me } = await sb.from('staff_profiles').select('role').eq('user_id', currentUser.id).single();
-    if (!['admin','admin_plus'].includes(me.role)){ list.textContent='Solo Admin'; return; }
-    const { data, error } = await sb.from('staff_profiles').select('*').order('created_at',{ascending:false});
-    if (error){ list.textContent='❌ '+error.message; return;}
-    list.innerHTML = data.map(u=>{
-      return `<div class="card">
-        <p><b>${u.username}</b> — ${u.role} — ${u.approved ? 'Aprobado ✅' : 'Pendiente ⏳'}</p>
-        <div class="actions">
-          <button data-id="${u.user_id}" class="approve">Aprobar</button>
-          <button data-id="${u.user_id}" class="deny">Rechazar</button>
-          <select data-id="${u.user_id}" class="chg-role">
-            <option ${u.role==='mod'?'selected':''} value="mod">Mod</option>
-            <option ${u.role==='mod_plus'?'selected':''} value="mod_plus">Mod+</option>
-            <option ${u.role==='admin'?'selected':''} value="admin">Admin</option>
-            <option ${u.role==='admin_plus'?'selected':''} value="admin_plus">Admin+</option>
-          </select>
-        </div>
-      </div>`;
-    }).join('');
-    // bind
-    list.querySelectorAll('.approve').forEach(b=>b.onclick=async()=>{
-      const id=b.dataset.id; const { error } = await sb.from('staff_profiles').update({approved:true}).eq('user_id',id);
-      if (error) alert(error.message); else loadUsers();
-    });
-    list.querySelectorAll('.deny').forEach(b=>b.onclick=async()=>{
-      const id=b.dataset.id; const { error } = await sb.from('staff_profiles').delete().eq('user_id',id);
-      if (error) alert(error.message); else loadUsers();
-    });
-    list.querySelectorAll('.chg-role').forEach(s=>s.onchange=async(e)=>{
-      const id=s.dataset.id; const role=e.target.value;
-      const { error } = await sb.from('staff_profiles').update({role}).eq('user_id',id);
-      if (error) alert(error.message); else loadUsers();
-    });
-  }
+  listEl.innerHTML = data.map(u=>`
+    <div class="kz-item">
+      <p><b>${u.username}</b> — ${u.email} — <span class="kz-badge gray">${u.role}</span> — ${u.approved ? 'Aprobado ✅' : 'Pendiente ⏳'}</p>
+      <div class="kz-actions">
+        <button class="kz-btn sec approve" data-id="${u.user_id}">Aprobar</button>
+        <button class="kz-btn sec deny" data-id="${u.user_id}">Eliminar</button>
+        <select class="kz-select chgrole" data-id="${u.user_id}" style="width:auto">
+          <option value="mod" ${u.role==='mod'?'selected':''}>Mod</option>
+          <option value="mod_plus" ${u.role==='mod_plus'?'selected':''}>Mod+</option>
+          <option value="admin" ${u.role==='admin'?'selected':''}>Admin</option>
+          <option value="admin_plus" ${u.role==='admin_plus'?'selected':''}>Admin+</option>
+        </select>
+      </div>
+    </div>
+  `).join('');
+
+  document.querySelectorAll('.approve').forEach(b=>b.onclick=async()=>{
+    const id=b.dataset.id; const { error } = await sb.from('staff_profiles').update({approved:true}).eq('user_id',id);
+    if (error) alert(error.message); else loadUsers();
+  });
+  document.querySelectorAll('.deny').forEach(b=>b.onclick=async()=>{
+    const id=b.dataset.id; if(!confirm('¿Eliminar?'))return;
+    const { error } = await sb.from('staff_profiles').delete().eq('user_id',id);
+    if (error) alert(error.message); else loadUsers();
+  });
+  document.querySelectorAll('.chgrole').forEach(s=>s.onchange=async(e)=>{
+    const id=s.dataset.id; const role=e.target.value;
+    const { error } = await sb.from('staff_profiles').update({role}).eq('user_id',id);
+    if (error) alert(error.message); else loadUsers();
+  });
+}
+
+// Sesión persistente si ya estaba logueado
+sb.auth.getUser().then(async ({ data })=>{
+  if (data.user){ currentUser=data.user; await afterLogin(); }
+});
 </script>
