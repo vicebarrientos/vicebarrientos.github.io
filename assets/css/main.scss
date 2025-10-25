@@ -95,7 +95,6 @@ p, a, li, input, textarea, button, .page__lead {
 }
 .card .actions .btn{ padding:.4rem .7rem; }
 
-
 /* ====== Navegación (toque sutil) ====== */
 .masthead, .greedy-nav {
   backdrop-filter: saturate(120%) blur(6px);
@@ -105,3 +104,30 @@ p, a, li, input, textarea, button, .page__lead {
 /* ====== Contenido base ====== */
 p { line-height: 1.7; font-size: 1.05rem; }
 h1, h2 { margin-top: .6rem; }
+
+/* ===== Modal de respuesta ===== */
+.kz-modal-backdrop{
+  position:fixed; inset:0; background:rgba(0,0,0,.55);
+  display:none; align-items:center; justify-content:center; z-index:9999;
+}
+.kz-modal{ width: min(720px, 92vw); background:#1b2030; color:#fff;
+  border:1px solid rgba(255,255,255,.12); border-radius:16px; box-shadow:0 30px 60px rgba(0,0,0,.45);
+}
+.kz-modal header{display:flex; align-items:center; justify-content:space-between; padding:14px 16px;
+  border-bottom:1px solid rgba(255,255,255,.08)}
+.kz-modal h4{margin:0}
+.kz-x{border:none;background:transparent;color:#fff;opacity:.7;font-size:20px;cursor:pointer}
+.kz-modal .body{padding:14px 16px; display:grid; gap:10px}
+.kz-field{display:grid; gap:6px}
+.kz-field label{opacity:.85; font-size:.95rem}
+.kz-field input, .kz-field textarea, .kz-field select{
+  width:100%; border-radius:12px; border:1px solid rgba(255,255,255,.12);
+  background:#0f1320; color:#fff; padding:10px 12px;
+}
+.kz-field textarea{min-height:160px; resize:vertical}
+.kz-modal footer{display:flex; gap:10px; justify-content:flex-end; padding:14px 16px; border-top:1px solid rgba(255,255,255,.08)}
+@media (max-width: 480px){
+  .kz-modal{width:96vw;border-radius:14px}
+  .kz-field textarea{min-height:140px}
+}
+
