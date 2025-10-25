@@ -219,14 +219,18 @@ function renderItem(r){
 }
 
 function bindActions(table){
-  document.querySelectorAll('.set-status').forEach(sel=>{
-    sel.onchange = async (e)=>{
-      const id = e.target.closest('.kz-item').dataset.id;
-      const status = e.target.value; if(!status) return;
-      const { error } = await sb.from(table).update({
-        status, updated_by: currentUser.id, updated_by_name: myProfile.username
-      }).eq('id', id);
-      if (error) alert(error.message); else load();
+    document.querySelectorAll('.reply').forEach(btn=>{
+    btn.onclick = (e)=>{
+      const card = e.target.closest('.kz-item');
+      const id = card.dataset.id;
+      const email = card.querySelector('.kz-email').textContent.trim();
+      openReplyModal({
+        table,
+        id,
+        to: email,
+        subject: 'Kronos Zone — Respuesta',
+        message: 'Gracias por tu reporte. Estamos revisando.'
+      });
     };
   });
 
