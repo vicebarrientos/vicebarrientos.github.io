@@ -254,17 +254,20 @@ function bindActions(table){
       if (!message) return;
       const nextStatus = confirm('¿Marcar EN PROGRESO? Aceptar=Sí / Cancelar=No') ? 'en_progreso' : undefined;
 
-      const { error } = await sb.functions.invoke('send-reply',{
-        body:{
-          to: email,
-          subject, message,
-          report_id: id,
-          table: table,
-          status: nextStatus,
-          replied_by: myProfile.username,
-          from_alias: document.getElementById('fromAlias').value
+      const { error } = await sb.functions.invoke('send-reply', {
+        body: {
+          to: rm_to.value.trim(),
+          subject: rm_subject.value.trim() || 'Kronos Zone — Respuesta',
+          message: rm_message.value.trim(),
+          report_id: RM_CONTEXT.id,               // <- debe ser un UUID válido
+          table: RM_CONTEXT.table,                // 'reports' | 'support_tickets'
+          status: rm_status.value || undefined,
+          replied_by: myProfile?.username || 'admin',
+          from_alias: rm_from.value               // 'soporte' | 'administracion'
         }
       });
+if (error) { rm_msg.textContent = error.message; return; }
+
       if (error) alert(error.message); else { alert('Enviado'); load(); }
     };
   });
