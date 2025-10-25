@@ -8,7 +8,7 @@ classes: wide
 <form id="ticket-form">
   <div class="form-group"><label>Tu Nick</label><input id="nick" required></div>
   <div class="form-group"><label>Tu correo</label><input id="email" type="email" required></div>
-  <div class="form-group"><label>Tipo de ayuda</label><input id="ttype" placeholder="p.ej. Problemas de login" required></div>
+  <div class="form-group"><label>Tipo de ayuda</label><input id="question_type" placeholder="p.ej. Problemas de login" required></div>
   <div class="form-group"><label>Descripción</label><textarea id="description" rows="5" required></textarea></div>
   <div class="form-group"><label>Tu Discord (opcional)</label><input id="discord"></div>
   <button class="btn btn--primary" type="submit">Enviar</button>
@@ -25,7 +25,7 @@ classes: wide
       const payload = {
         nick: document.getElementById('nick').value.trim(),
         email: document.getElementById('email').value.trim(),
-        ttype: document.getElementById('ttype').value.trim(),
+        question_type: document.getElementById('question_type').value.trim(),
         description: document.getElementById('description').value.trim(),
         discord: document.getElementById('discord').value.trim() || null
       };
