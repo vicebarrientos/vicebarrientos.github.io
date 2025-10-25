@@ -30,9 +30,9 @@ author:
   bio: "Servidor Minecraft en español"
   links:
     - label: "Discord"
-      url: "https://discord.gg/tu-invite"
+      url: "https://discord.kronoszone.me"
     - label: "IP del servidor"
-      url: "#"
+      url: "mc.kronoszone.me"
 
 sass:
   style: compressed
