@@ -28,3 +28,5 @@ Servidor de Minecraft en español con modalidades **Survival**, **Arenas PVP (Co
 
 > **IP:** `mc.kronoszone.me`  
 > **Reglas:** Respeto, cero cheats, juego limpio.
+>
+> Hola prueba
