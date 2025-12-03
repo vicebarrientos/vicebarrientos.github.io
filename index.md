@@ -10,12 +10,12 @@ header:
   overlay_image: "/assets/img/banner.jpg"
   actions:
     - label: "Discord"
-      url: "https://discord.gg/ZeYesFzdrb"
+      url: "https://discord.kronoszone.me"
     - label: "Tienda"
       url: "https://tienda.kronoszone.me"
     - label: "Reportes"
       url: "https://www.kronoszone.me/reportes"
-excerpt: "<center><strong>mc.kronoszone.me</strong><br>Versiones <strong>1.8 – 1.21</strong><br>¡Eventos semanales y rangos V.I.Ps</center>"
+excerpt: "<center><strong>mc.kronoszone.me</strong><br>Versiones <strong>1.13 – 1.21.10</strong><br>¡Eventos semanales y rangos V.I.Ps</center>"
 ---
 
 ### ¿Qué es Kronos Zone?
