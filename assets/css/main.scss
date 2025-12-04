@@ -285,7 +285,7 @@ html, body {
 }
 
 /* =================================================
-   NAVBAR FLOTANTE (ARREGLAR DOBLE CONTENEDOR)
+   NAVBAR FLOTANTE CON EFECTO VIDRIO
    ================================================= */
 
 /* Masthead totalmente transparente, sin línea blanca ni fondo extra */
@@ -298,28 +298,45 @@ html, body {
 /* Limitar ancho y centrar el contenido del header */
 .masthead__inner-wrap {
   max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
 }
 
-/* Barra real: solo greedy-nav, flotando dentro del header */
+/* Barra real: greedy-nav con efecto vidrio */
 .greedy-nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
 
-  background: rgba(2, 4, 10, 0.90);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  /* vidrio */
+  background: linear-gradient(
+    135deg,
+    rgba(5, 10, 25, 0.80),
+    rgba(25, 35, 70, 0.72)
+  );
+  backdrop-filter: blur(18px) saturate(130%);
+  -webkit-backdrop-filter: blur(18px) saturate(130%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 
   border-radius: 999px;
-  padding: 0.55rem 1.2rem;
+  padding: 0.55rem 1.4rem;
   margin-top: 0.75rem;
   margin-bottom: 0.75rem;
-  box-shadow: 0 10px 30px rgba(0,0,0,.6);
+  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.65);
+  position: relative;
+  overflow: hidden;
+}
+
+/* brillos suaves */
+.greedy-nav::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top left,
+    rgba(255, 255, 255, 0.16),
+    transparent 55%);
+  pointer-events: none;
 }
 
 /* Logo + título */
@@ -335,7 +352,7 @@ html, body {
   display: flex;
   align-items: center;
   flex-wrap: nowrap;
-  gap: 0.6rem;
+  gap: 0.8rem;
 }
 
 /* Estilo de links del menú */
@@ -343,33 +360,45 @@ html, body {
   font-size: 0.90rem;
   text-transform: uppercase;
   letter-spacing: .08em;
-  padding: 0.4rem 0.4rem;
+  padding: 0.45rem 0.45rem;
   opacity: 0.85;
+  border-bottom: 2px solid transparent;
+  transition:
+    opacity .15s ease,
+    border-color .15s ease,
+    transform .15s ease;
 }
 
 /* Hover */
 .greedy-nav .visible-links > li > a:hover {
   opacity: 1;
-  border-bottom: 2px solid #f66e00;
+  border-color: #f66e00;
+  transform: translateY(-1px);
 }
 
 /* Item activo (página actual) más marcado */
 .greedy-nav .visible-links > li.active > a,
 .greedy-nav .visible-links > li.current > a {
   opacity: 1;
-  border-bottom: 2px solid #f66e00;
+  border-color: #f66e00;
 }
 
 /* Mobile: dejar que el menú se adapte y no se corte */
 @media (max-width: 768px) {
   .greedy-nav {
-    border-radius: 16px;
+    border-radius: 18px;
     flex-wrap: wrap;
+    justify-content: center;
+    row-gap: .35rem;
   }
 
   .greedy-nav .visible-links {
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: center;
+  }
+
+  .greedy-nav .visible-links > li > a {
+    padding-inline: 0.55rem;
   }
 }
 
