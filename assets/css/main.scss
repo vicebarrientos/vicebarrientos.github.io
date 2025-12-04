@@ -218,7 +218,7 @@ html {
 body {
   position: relative;
   background-color: #050309 !important;
-  background-image: url('/assets/images/banner.jpg') !important; /* cambia ruta si tu imagen se llama distinto */
+  background-image: url('/assets/img/banner.jpg') !important; /* cambia ruta si tu imagen se llama distinto */
   background-position: center top !important;
   background-size: cover !important;
   background-repeat: no-repeat !important;
@@ -323,4 +323,20 @@ article.page,
 .page__content label {
   color: rgba(255, 255, 255, .86) !important;
   font-weight: 500;
+}
+
+/* Fix para borrar bordes viejos */
+html, body {
+  border: none !important;
+  outline: none !important;
+}
+
+/* Centrar contenedor */
+.initial-content,
+.masthead__inner-wrap {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-left: 1.5rem;
 }
