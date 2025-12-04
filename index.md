@@ -23,10 +23,11 @@ excerpt: "<center><strong>mc.kronoszone.me</strong><br>Versiones <strong>1.13 �
 Actualmente contamos con la modalidad **Survival**, pero tenemos pensado en agregar más modalidades de tipo **Minijuego**.
 
 ### Contamos con:
-- Sistema de auto sanciones potenciado por IA (Kronos Eye - AntiCheat)
-- Rangos magnificos y balanceados en la tienda
-- Eventos, misiones y economía
+- Sistema de Anti Cheat potenciado por IA (Kronos Eye - AntiCheat)
+- Rangos V.I.P en la tienda oficial del servidor
+- Eventos, clanes y economía
 
-> **IP:** `mc.kronoszone.me`  
-> **Reglas:** Respeto, cero cheats, juego limpio.
+---
+> **IP:** `mc.kronoszone.me`
+---
 
