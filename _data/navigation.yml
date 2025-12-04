@@ -1,12 +1,12 @@
 main:
   - title: "Inicio"
     url: /
-  - title: "FAQ"
-    url: /faq/
-  - title: "reglas"
-    url: /reglas/
-  - title: "Changelogs"
-    url: /changelogs/
   - title: "Tienda"
     url: "https://tienda.kronoszone.me"  # cambia al enlace real
     external: true
+  - title: "reglas"
+    url: /reglas/
+  - title: "FAQ"
+    url: /faq/
+  - title: "Changelogs"
+    url: /changelogs/
