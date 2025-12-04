@@ -1,8 +1,10 @@
 main:
   - title: "Inicio"
     url: /
-  - title: "Sobre nosotros"
-    url: /sobre/
+  - title: "FAQ"
+    url: /faq/
+  - title: "reglas"
+    url: /reglas/
   - title: "Changelogs"
     url: /changelogs/
   - title: "Tienda"
