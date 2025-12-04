@@ -22,6 +22,7 @@ excerpt: "<center><strong>mc.kronoszone.me</strong><br>Versiones <strong>1.13 �
 
 ### ¿Qué es Kronos Zone?
 "Kronos Zone" es un servidor de Minecraft tipo **Network** en donde podrás entrar a divertirte con tus amigos o conocer a demás gente.
+
 Actualmente contamos con la modalidad **Survival**, pero tenemos pensado en agregar más modalidades de tipo **Minijuego**.
 
 ### Contamos con:
@@ -38,6 +39,7 @@ Actualmente contamos con la modalidad **Survival**, pero tenemos pensado en agre
 ### Contacto
 
 > Correo: `contacto@kronoszone.me`
+> 
 > Discord: `discord.kronoszone.me`
 
 
