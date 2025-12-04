@@ -421,3 +421,52 @@ html, body {
   color: rgba(255, 255, 255, .86) !important;
   font-weight: 500;
 }
+
+/* ===== Ancho global centrado (navbar + contenido) ===== */
+
+/* Contenedor principal del contenido */
+.initial-content {
+  max-width: 1200px;
+  margin-inline: auto;      /* centra */
+  padding-inline: 1.5rem;   /* margen lateral */
+}
+
+/* Contenedor interno de la navbar */
+.masthead__inner-wrap {
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+/* ===== Ensanchar listados y entradas de Changelogs ===== */
+
+/* Página /changelogs/ (listado) */
+.layout--collection .archive {
+  max-width: 1200px;
+  margin-inline: auto;
+}
+
+/* Cada item del listado */
+.layout--collection .archive__item {
+  max-width: 100%;
+}
+
+/* Página interna de cada changelog (la de V1.0.2 – Beta, etc.) */
+.layout--single .page {
+  max-width: 1200px;
+  margin-inline: auto;
+}
+
+/* ===== Botones del hero inicio centrados ===== */
+
+.page__hero .page__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;   /* centra */
+  gap: 0.75rem;
+}
+
+.page__hero .page__actions .btn {
+  min-width: 9rem;
+  text-align: center;
+}
