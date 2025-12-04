@@ -610,3 +610,52 @@ html, body {
 .kz-main-card p {
   margin-bottom: 0.8rem;
 }
+
+/* ===========================================
+   FIX DEFINITIVO: CENTRAR TODAS LAS PÁGINAS
+   (inicio, reglas, FAQ, changelogs, etc.)
+   =========================================== */
+
+/* 1. Hacer que la columna de contenido sea una sola y centrada */
+.layout--single .page,
+.layout--single article.page,
+.layout--collection .page,
+.layout--collection article.page {
+  float: none !important;
+  width: 100% !important;
+  max-width: 1100px;                  /* mismo ancho en todas las páginas */
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* 2. El “bloque de vidrio” interior centrado y con padding cómodo */
+.layout--single .page__inner-wrap,
+.layout--collection .page__inner-wrap {
+  max-width: 100%;                    /* que ocupe todo el ancho de la columna */
+  margin-left: 0;
+  margin-right: 0;
+  padding: 2.4rem 3rem;               /* espacio a los lados para que no se pegue */
+}
+
+/* 3. Evitar paddings raros adicionales del tema dentro del contenido */
+.layout--single .page__content,
+.layout--collection .page__content {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* 4. El listado de /changelogs/ centrado igual que el resto */
+.layout--collection .archive {
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+
+/* 5. Card principal de inicio un poquito más ancho y centrado */
+.kz-main-card {
+  max-width: 800px;                   /* un poco más ancho para que se vea mejor */
+  margin: 0 auto 3rem auto;           /* centrado horizontal */
+  padding: 2.4rem 2.8rem;             /* bordes internos */
+}
