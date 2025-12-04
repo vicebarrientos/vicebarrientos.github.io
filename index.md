@@ -13,13 +13,14 @@ header:
       url: "https://discord.kronoszone.me"
     - label: "Tienda"
       url: "https://tienda.kronoszone.me"
-    - label: "Reportes"
-      url: "https://www.kronoszone.me/reportes"
+    - label: "FAQ"
+      url: "https://www.kronoszone.me/FAQ"
 excerpt: "<center><strong>mc.kronoszone.me</strong><br>Versiones <strong>1.13 – 1.21.10</strong><br>¡Eventos semanales y rangos V.I.Ps</center>"
 ---
 
 ### ¿Qué es Kronos Zone?
-Servidor de Minecraft en español con modalidades **Survival**, **Arenas PVP (Coliseo)**, **Full PVP** y **Minijuegos**.
+"Kronos Zone" es un servidor de Minecraft tipo **Network** en donde podrás entrar a divertirte con tus amigos o conocer a demás gente.
+Actualmente contamos con la modalidad **Survival**, pero tenemos pensado en agregar más modalidades de tipo **Minijuego**.
 
 ### Contamos con:
 - Sistema de auto sanciones potenciado por IA (Kronos Eye - AntiCheat)
@@ -28,5 +29,4 @@ Servidor de Minecraft en español con modalidades **Survival**, **Arenas PVP (Co
 
 > **IP:** `mc.kronoszone.me`  
 > **Reglas:** Respeto, cero cheats, juego limpio.
->
-> Hola prueba
+
