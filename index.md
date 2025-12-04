@@ -29,9 +29,6 @@ Actualmente contamos con la modalidad **Survival**, pero tenemos pensado en agre
 - Rangos V.I.P en la tienda oficial del servidor
 - Eventos, clanes y economía
 
----
-
 > **IP:** `mc.kronoszone.me`
 
----
 
