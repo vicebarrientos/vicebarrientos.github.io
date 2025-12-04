@@ -6,4 +6,4 @@ collection: changelogs
 entries_layout: list
 ---
 
-Aquí encuentras el historial de cambios del servidor.
+Aquí se encuentra el historial de cambios del servidor.
