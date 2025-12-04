@@ -38,7 +38,7 @@ p, a, li, input, textarea, button, .page__lead {
   100% { text-shadow: 0 0 16px rgba(246,110,0,0.70), 0 0 28px rgba(255,255,255,0.25); }
 }
 
-/* ====== Hero / Banner ====== */
+/* ====== Hero / Banner (sección principal) ====== */
 .page__hero {
   min-height: 70vh;
   display: flex;
@@ -113,19 +113,6 @@ p, a, li, input, textarea, button, .page__lead {
   font-weight:600;
 }
 .card .actions .btn { padding:.4rem .7rem; }
-
-/* ====== Navegación ====== */
-.masthead,
-.greedy-nav {
-  background: rgba(2, 4, 10, 0.82) !important;
-  backdrop-filter: saturate(120%) blur(12px);
-  -webkit-backdrop-filter: saturate(120%) blur(12px);
-  box-shadow: 0 10px 30px rgba(0,0,0,.6);
-}
-.greedy-nav a,
-.site-title {
-  font-weight: 600;
-}
 
 /* ====== Contenido base ====== */
 p {
@@ -282,6 +269,116 @@ article.page,
   margin-top: 1rem;
 }
 
+/* Fix para borrar bordes viejos */
+html, body {
+  border: none !important;
+  outline: none !important;
+}
+
+/* Centrar contenedor de contenido */
+.initial-content {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+/* =================================================
+   NAVBAR FLOTANTE (ARREGLAR DOBLE CONTENEDOR)
+   ================================================= */
+
+/* Masthead totalmente transparente, sin línea blanca ni fondo extra */
+.masthead {
+  background: transparent !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+
+/* Limitar ancho y centrar el contenido del header */
+.masthead__inner-wrap {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+/* Barra real: solo greedy-nav, flotando dentro del header */
+.greedy-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+
+  background: rgba(2, 4, 10, 0.90);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  border-radius: 999px;
+  padding: 0.55rem 1.2rem;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,.6);
+}
+
+/* Logo + título */
+.site-title {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-weight: 600;
+}
+
+/* Lista de links */
+.greedy-nav .visible-links {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 0.6rem;
+}
+
+/* Estilo de links del menú */
+.greedy-nav .visible-links > li > a {
+  font-size: 0.90rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  padding: 0.4rem 0.4rem;
+  opacity: 0.85;
+}
+
+/* Hover */
+.greedy-nav .visible-links > li > a:hover {
+  opacity: 1;
+  border-bottom: 2px solid #f66e00;
+}
+
+/* Item activo (página actual) más marcado */
+.greedy-nav .visible-links > li.active > a,
+.greedy-nav .visible-links > li.current > a {
+  opacity: 1;
+  border-bottom: 2px solid #f66e00;
+}
+
+/* Mobile: dejar que el menú se adapte y no se corte */
+@media (max-width: 768px) {
+  .greedy-nav {
+    border-radius: 16px;
+    flex-wrap: wrap;
+  }
+
+  .greedy-nav .visible-links {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+}
+
+/* Mantener negrita base en el título y enlaces */
+.greedy-nav a,
+.site-title {
+  font-weight: 600;
+}
+
 /* =================================================
    FORMULARIOS (REPORTES, CONTACTO, ETC.)
    ================================================= */
@@ -323,47 +420,4 @@ article.page,
 .page__content label {
   color: rgba(255, 255, 255, .86) !important;
   font-weight: 500;
-}
-
-/* Fix para borrar bordes viejos */
-html, body {
-  border: none !important;
-  outline: none !important;
-}
-
-/* Centrar contenedor */
-.initial-content,
-.masthead__inner-wrap {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 1.5rem;
-  padding-left: 1.5rem;
-}
-
-/* Estilo mejorado para la navbar */
-.greedy-nav .visible-links > li > a {
-  font-size: 0.92rem;
-  text-transform: uppercase;
-  letter-spacing: .07em;
-  padding: 0.75rem 0.6rem;
-  opacity: 0.85;
-}
-
-/* Espacio entre ítems */
-.greedy-nav .visible-links {
-  gap: 0.5rem;
-}
-
-/* Hover */
-.greedy-nav .visible-links > li > a:hover {
-  opacity: 1;
-  border-bottom: 2px solid #f66e00;
-}
-
-/* Item activo (página actual) más marcado */
-.greedy-nav .visible-links > li.active > a,
-.greedy-nav .visible-links > li.current > a {
-  opacity: 1;
-  border-bottom: 2px solid #f66e00;
 }
