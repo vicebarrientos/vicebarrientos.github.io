@@ -470,3 +470,65 @@ html, body {
   min-width: 9rem;
   text-align: center;
 }
+
+/* ===========================================
+   1) TODO el contenido con el mismo ancho
+      que la navbar (index, reglas, faq, etc.)
+   =========================================== */
+
+/* Páginas "single" (inicio, reglas, faq, página interna de changelog, etc.) */
+.layout--single article.page,
+.layout--single .page__inner-wrap {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Quitar paddings laterales raros del tema */
+.layout--single .page__inner-wrap,
+.layout--single .page__content {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* ===========================================
+   2) Changelogs (listado + tarjeta V1.0.2)
+   =========================================== */
+
+/* Página /changelogs/ (listado con el título CHANGES) */
+.layout--collection .archive {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Artículo de changelog dentro del listado */
+.layout--collection .archive__item {
+  max-width: 100%;
+}
+
+/* Página interna de cada changelog (V1.0.2 – BETA, etc.) */
+.layout--collection.layout--single article.page,
+.layout--collection.layout--single .page__inner-wrap {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ===========================================
+   3) Hero: que botones y texto queden perfectos
+   =========================================== */
+
+/* Centrar del todo los botones del hero */
+.page__hero .page__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+/* Todos con ancho similar */
+.page__hero .page__actions .btn {
+  min-width: 9rem;
+  text-align: center;
+}
