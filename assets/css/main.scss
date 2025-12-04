@@ -585,3 +585,28 @@ html, body {
   min-width: 9rem;
   text-align: center;
 }
+
+/* ===========================================
+   CARD PRINCIPAL CENTRADO (HOME)
+   =========================================== */
+
+.kz-main-card {
+  max-width: 760px;              /* ancho más angosto para que se vea compacto */
+  margin: 0 auto 3rem auto;      /* centrado horizontal */
+  padding: 2.2rem 2.4rem;        /* margen interno cómodo */
+  border-radius: 24px;
+  background: rgba(0, 0, 0, 0.78);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+/* texto dentro del card */
+.kz-main-card h3 {
+  margin-top: 0;
+  margin-bottom: 1.1rem;
+}
+
+.kz-main-card p {
+  margin-bottom: 0.8rem;
+}
