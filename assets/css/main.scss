@@ -29,7 +29,10 @@ p, a, li, input, textarea, button, .page__lead {
 }
 
 /* ====== Keyframes ====== */
-@keyframes kzFadeInUp { from {opacity:0; transform: translateY(12px);} to {opacity:1; transform: translateY(0);} }
+@keyframes kzFadeInUp {
+  from { opacity:0; transform: translateY(12px); }
+  to   { opacity:1; transform: translateY(0); }
+}
 @keyframes kzGlowPulse {
   0%   { text-shadow: 0 0 0 rgba(246,110,0,0.0), 0 0 0 rgba(255,255,255,0.0); }
   100% { text-shadow: 0 0 16px rgba(246,110,0,0.70), 0 0 28px rgba(255,255,255,0.25); }
@@ -38,31 +41,37 @@ p, a, li, input, textarea, button, .page__lead {
 /* ====== Hero / Banner ====== */
 .page__hero {
   min-height: 70vh;
-  display: flex; align-items: center; justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
 }
 
-.page__hero-title, .page__lead { color: #fff !important; }
+.page__hero-title,
+.page__lead {
+  color: #fff !important;
+}
 
-/* Fade-in al cargar (limitar a páginas con .kz-hero) */
-.kz-hero .page__hero        { opacity: 0; }
-.kz-loaded .kz-hero .page__hero { animation: kzFadeInUp 700ms ease-out both; }
-.kz-loaded .kz-hero .page__hero-title { animation: kzFadeInUp 800ms 80ms ease-out both; }
-.kz-loaded .kz-hero .page__lead       { animation: kzFadeInUp 900ms 140ms ease-out both; }
+/* Fade-in al cargar (solo páginas con .kz-hero) */
+.kz-hero .page__hero { opacity: 0; }
+.kz-loaded .kz-hero .page__hero        { animation: kzFadeInUp 700ms ease-out both; }
+.kz-loaded .kz-hero .page__hero-title  { animation: kzFadeInUp 800ms 80ms ease-out both; }
+.kz-loaded .kz-hero .page__lead        { animation: kzFadeInUp 900ms 140ms ease-out both; }
 
 /* Hover + glow del título */
 .kz-hero .page__hero-title {
   transition: transform .2s ease, color .2s ease, text-shadow .2s ease;
 }
 .kz-hero .page__hero-title:hover {
-  color: #f66e00;                 /* naranja Kronos */
+  color: #f66e00; /* naranja Kronos */
   transform: translateY(-1px) scale(1.01);
   animation: kzGlowPulse 900ms ease-in-out alternate infinite;
 }
 
 /* ====== Botones estilo gamer ====== */
 .page__hero .btn,
-.btn, .btn--primary {
+.btn,
+.btn--primary {
   background: transparent;
   border: 2px solid #fff;
   color: #fff !important;
@@ -70,10 +79,16 @@ p, a, li, input, textarea, button, .page__lead {
   padding: .85rem 1.25rem;
   border-radius: 10px;
   box-shadow: 0 0 0 rgba(0,0,0,0);
-  transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease, color .15s ease, background .15s ease;
+  transition:
+    transform .15s ease,
+    box-shadow .15s ease,
+    border-color .15s ease,
+    color .15s ease,
+    background .15s ease;
 }
 .page__hero .btn:hover,
-.btn:hover, .btn--primary:hover {
+.btn:hover,
+.btn--primary:hover {
   border-color: #f66e00;
   color: #fff !important;
   background: linear-gradient(90deg, #f66e00, #ff9a3c);
@@ -81,60 +96,121 @@ p, a, li, input, textarea, button, .page__lead {
   box-shadow: 0 8px 20px rgba(246,110,0,.35);
 }
 
-.card{
+/* ====== Cards ====== */
+.card {
   background:#1f242c;
   border:1px solid rgba(255,255,255,.08);
   border-radius:12px;
   padding:1rem 1.2rem;
   margin:0 0 1rem 0;
 }
-.card .actions{ display:flex; gap:.5rem; flex-wrap:wrap; margin-top:.5rem; }
-.card .status{
-  padding:.08rem .5rem; border-radius:6px; margin-left:.25rem;
-  background:#2a313b; font-weight:600;
+.card .actions { display:flex; gap:.5rem; flex-wrap:wrap; margin-top:.5rem; }
+.card .status {
+  padding:.08rem .5rem;
+  border-radius:6px;
+  margin-left:.25rem;
+  background:#2a313b;
+  font-weight:600;
 }
-.card .actions .btn{ padding:.4rem .7rem; }
+.card .actions .btn { padding:.4rem .7rem; }
 
-/* ====== Navegación (toque sutil) ====== */
-.masthead, .greedy-nav {
-  backdrop-filter: saturate(120%) blur(6px);
+/* ====== Navegación ====== */
+.masthead,
+.greedy-nav {
+  background: rgba(2, 4, 10, 0.82) !important;
+  backdrop-filter: saturate(120%) blur(12px);
+  -webkit-backdrop-filter: saturate(120%) blur(12px);
+  box-shadow: 0 10px 30px rgba(0,0,0,.6);
 }
-.greedy-nav a, .site-title { font-weight: 600; }
+.greedy-nav a,
+.site-title {
+  font-weight: 600;
+}
 
 /* ====== Contenido base ====== */
-p { line-height: 1.7; font-size: 1.05rem; }
-h1, h2 { margin-top: .6rem; }
+p {
+  line-height: 1.7;
+  font-size: 1.05rem;
+}
+h1, h2 {
+  margin-top: .6rem;
+}
 
 /* ===== Modal de respuesta ===== */
-.kz-modal-backdrop{
-  position:fixed; inset:0; background:rgba(0,0,0,.55);
-  display:none; align-items:center; justify-content:center; z-index:9999;
+.kz-modal-backdrop {
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.55);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
 }
-.kz-modal{ width: min(720px, 92vw); background:#1b2030; color:#fff;
-  border:1px solid rgba(255,255,255,.12); border-radius:16px; box-shadow:0 30px 60px rgba(0,0,0,.45);
+.kz-modal {
+  width: min(720px, 92vw);
+  background:#1b2030;
+  color:#fff;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:16px;
+  box-shadow:0 30px 60px rgba(0,0,0,.45);
 }
-.kz-modal header{display:flex; align-items:center; justify-content:space-between; padding:14px 16px;
-  border-bottom:1px solid rgba(255,255,255,.08)}
-.kz-modal h4{margin:0}
-.kz-x{border:none;background:transparent;color:#fff;opacity:.7;font-size:20px;cursor:pointer}
-.kz-modal .body{padding:14px 16px; display:grid; gap:10px}
-.kz-field{display:grid; gap:6px}
-.kz-field label{opacity:.85; font-size:.95rem}
-.kz-field input, .kz-field textarea, .kz-field select{
-  width:100%; border-radius:12px; border:1px solid rgba(255,255,255,.12);
-  background:#0f1320; color:#fff; padding:10px 12px;
+.kz-modal header {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:14px 16px;
+  border-bottom:1px solid rgba(255,255,255,.08);
 }
-.kz-field textarea{min-height:160px; resize:vertical}
-.kz-modal footer{display:flex; gap:10px; justify-content:flex-end; padding:14px 16px; border-top:1px solid rgba(255,255,255,.08)}
+.kz-modal h4 { margin:0; }
+.kz-x {
+  border:none;
+  background:transparent;
+  color:#fff;
+  opacity:.7;
+  font-size:20px;
+  cursor:pointer;
+}
+.kz-modal .body {
+  padding:14px 16px;
+  display:grid;
+  gap:10px;
+}
+.kz-field { display:grid; gap:6px; }
+.kz-field label {
+  opacity:.85;
+  font-size:.95rem;
+}
+.kz-field input,
+.kz-field textarea,
+.kz-field select {
+  width:100%;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.12);
+  background:#0f1320;
+  color:#fff;
+  padding:10px 12px;
+}
+.kz-field textarea {
+  min-height:160px;
+  resize:vertical;
+}
+.kz-modal footer {
+  display:flex;
+  gap:10px;
+  justify-content:flex-end;
+  padding:14px 16px;
+  border-top:1px solid rgba(255,255,255,.08);
+}
 @media (max-width: 480px){
-  .kz-modal{width:96vw;border-radius:14px}
-  .kz-field textarea{min-height:140px}
+  .kz-modal { width:96vw; border-radius:14px; }
+  .kz-field textarea { min-height:140px; }
 }
 
-/* =========================
-   FONDO GLOBAL CON BANNER
-   ========================= */
+/* =================================================
+   FONDO GLOBAL CON BANNER + EFECTO VIDRIO OSCURO
+   ================================================= */
 
+/* Fondo general con el banner del servidor */
 html {
   background: transparent !important;
 }
@@ -149,7 +225,7 @@ body {
   background-attachment: fixed;
 }
 
-/* capa oscura encima del fondo para que se lea todo */
+/* Capa oscura encima del fondo para que se lea todo */
 body::before {
   content: "";
   position: fixed;
@@ -159,61 +235,56 @@ body::before {
   background: radial-gradient(circle at top, rgba(0,0,0,.15), rgba(0,0,0,.78));
 }
 
-/* =========================
-   CONTENEDORES PRINCIPALES
-   ========================= */
-
+/* Quitar fondos grises del tema */
+.initial-content,
+#main,
+article.page,
+.wrapper,
 .wrap,
 .page,
-.page__inner-wrap,
+.page__hero,
+.page__hero--overlay,
 .page__content,
-.archive,
-.page__footer,
+.page__title,
 .page__meta,
-.page__title {
+.page__footer,
+.archive {
   background: transparent !important;
   box-shadow: none !important;
 }
 
-/* bloque principal tipo vidrio */
-.page__inner-wrap {
+/* Bloque principal tipo “vidrio negro” */
+.page .page__inner-wrap {
   background: rgba(0, 0, 0, 0.70) !important;
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-radius: 18px;
-  border: 1px solid rgba(255, 255, 255, .08);
+  border: 1px solid rgba(255, 255, 255, .10);
   padding: 1.8rem 1.6rem;
 }
 
-/* títulos (REPORTES, REPORTAR JUGADOR) con un poquito de glow */
+/* Títulos de secciones con un poco de glow */
 .page__content h1,
 .page__content h2,
 .page__content h3 {
   text-shadow: 0 0 10px rgba(0,0,0,.75);
 }
 
-/* líneas divisorias más suaves */
+/* Líneas divisorias más suaves */
 .page__content hr,
 .page__title::after {
   border-color: rgba(255, 255, 255, .18) !important;
   background-color: rgba(255, 255, 255, .18) !important;
 }
 
-/* =========================
-   NAVBAR / MASTHEAD VIDRIO
-   ========================= */
-
-.masthead,
-.greedy-nav {
-  background: rgba(2, 4, 10, 0.82) !important;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 10px 30px rgba(0,0,0,.6);
+/* Un poco de aire para que el contenido no quede pegado arriba */
+.page__content {
+  margin-top: 1rem;
 }
 
-/* =========================
-   FORMULARIOS (REPORTES)
-   ========================= */
+/* =================================================
+   FORMULARIOS (REPORTES, CONTACTO, ETC.)
+   ================================================= */
 
 .page__content input[type="text"],
 .page__content input[type="email"],
@@ -248,105 +319,8 @@ body::before {
   box-shadow: 0 0 0 1px rgba(246, 110, 0, .55);
 }
 
-/* labels de los campos */
+/* Labels de los campos */
 .page__content label {
   color: rgba(255, 255, 255, .86) !important;
   font-weight: 500;
-}
-
-/* un poquito de aire arriba del contenido */
-.page__content {
-  margin-top: 1rem;
-}
-
-/* ========= DEBUG RÁPIDO ========= */
-/* (puedes borrarlo después) */
-body {
-  border: 4px solid #f66e00 !important;
-}
-
-/* ========= FONDO Y CONTENEDORES ========= */
-
-html {
-  background: transparent !important;
-}
-
-body {
-  background-color: #050309 !important;
-  background-image: url('/assets/images/banner.jpg') !important; /* cambia el nombre si tu imagen es otra */
-  background-position: center top !important;
-  background-size: cover !important;
-  background-repeat: no-repeat !important;
-  background-attachment: fixed;
-}
-
-/* Estos son los “bloques grises” del tema */
-.initial-content,
-#main,
-article.page,
-.page__hero,
-.page__hero--overlay,
-.wrapper,
-.page,
-.page__content,
-.page__title,
-.page__meta,
-.page__footer {
-  background: transparent !important;
-  box-shadow: none !important;
-}
-
-/* El contenedor principal donde va tu formulario:
-   lo hacemos tipo vidrio oscuro */
-.page .page__inner-wrap {
-  background: rgba(0, 0, 0, 0.70) !important;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-radius: 18px;
-  border: 1px solid rgba(255, 255, 255, .10);
-  padding: 1.8rem 1.6rem;
-}
-
-/* ========= FORMULARIOS (REPORTES) ========= */
-
-.page__content input[type="text"],
-.page__content input[type="email"],
-.page__content input[type="url"],
-.page__content input[type="password"],
-.page__content input[type="search"],
-.page__content input[type="tel"],
-.page__content textarea,
-.page__content select {
-  background: rgba(0, 0, 0, 0.60) !important;
-  border: 1px solid rgba(255, 255, 255, .22) !important;
-  color: #fff !important;
-  border-radius: 14px !important;
-  padding: 0.8rem 1rem !important;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, .6);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-}
-
-.page__content input:focus,
-.page__content textarea:focus,
-.page__content select:focus {
-  background: rgba(0, 0, 0, 0.80) !important;
-  border-color: #f66e00 !important;
-  outline: none;
-  box-shadow: 0 0 0 1px rgba(246, 110, 0, .55);
-}
-
-.page__content input::placeholder,
-.page__content textarea::placeholder {
-  color: rgba(255, 255, 255, .45) !important;
-}
-
-.page__content label {
-  color: rgba(255, 255, 255, .86) !important;
-  font-weight: 500;
-}
-
-/* Un poco de aire para que no quede pegado arriba */
-.page__content {
-  margin-top: 1rem;
 }
