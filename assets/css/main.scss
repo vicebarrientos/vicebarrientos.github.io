@@ -340,3 +340,30 @@ html, body {
   padding-left: 1.5rem;
   padding-left: 1.5rem;
 }
+
+/* Estilo mejorado para la navbar */
+.greedy-nav .visible-links > li > a {
+  font-size: 0.92rem;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  padding: 0.75rem 0.6rem;
+  opacity: 0.85;
+}
+
+/* Espacio entre ítems */
+.greedy-nav .visible-links {
+  gap: 0.5rem;
+}
+
+/* Hover */
+.greedy-nav .visible-links > li > a:hover {
+  opacity: 1;
+  border-bottom: 2px solid #f66e00;
+}
+
+/* Item activo (página actual) más marcado */
+.greedy-nav .visible-links > li.active > a,
+.greedy-nav .visible-links > li.current > a {
+  opacity: 1;
+  border-bottom: 2px solid #f66e00;
+}
