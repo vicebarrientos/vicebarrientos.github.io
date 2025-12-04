@@ -532,3 +532,56 @@ html, body {
   min-width: 9rem;
   text-align: center;
 }
+
+/* ===========================================
+   RE-CENTRAR CONTENIDO Y DEVOLVER PADDING
+   =========================================== */
+
+/* Todos los bloques de contenido principales (index, reglas, FAQ, changelogs…) */
+.page .page__inner-wrap,
+.layout--single .page__inner-wrap {
+  max-width: 1100px;                 /* ancho fijo, centrado */
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1.8rem 2.4rem;            /* padding cómodo a los lados */
+}
+
+/* Por si alguna regla anterior dejó padding lateral en 0 */
+.layout--single .page__inner-wrap,
+.layout--single .page__content {
+  padding-left: 2.4rem !important;
+  padding-right: 2.4rem !important;
+}
+
+/* Listado de /changelogs/ centrado igual que el resto */
+.layout--collection .archive {
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 2.4rem;
+  padding-right: 2.4rem;
+}
+
+/* Página interna de cada changelog (v1.0.2 – Beta…) */
+.layout--collection.layout--single article.page,
+.layout--collection.layout--single .page__inner-wrap {
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ===========================================
+   BOTONES DEL HERO CENTRADOS 100%
+   =========================================== */
+
+.page__hero .page__actions {
+  display: flex !important;
+  justify-content: center !important;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.page__hero .page__actions .btn {
+  min-width: 9rem;
+  text-align: center;
+}
