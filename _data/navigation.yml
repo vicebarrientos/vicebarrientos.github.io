@@ -4,7 +4,7 @@ main:
   - title: "Tienda"
     url: "https://tienda.kronoszone.me"  # cambia al enlace real
     external: true
-  - title: "reglas"
+  - title: "Reglas"
     url: /reglas/
   - title: "FAQ"
     url: /faq/
