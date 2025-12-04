@@ -30,6 +30,8 @@ Actualmente contamos con la modalidad **Survival**, pero tenemos pensado en agre
 - Eventos, clanes y economía
 
 ---
+
 > **IP:** `mc.kronoszone.me`
+
 ---
 
