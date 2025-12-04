@@ -258,3 +258,95 @@ body::before {
 .page__content {
   margin-top: 1rem;
 }
+
+/* ========= DEBUG RÁPIDO ========= */
+/* (puedes borrarlo después) */
+body {
+  border: 4px solid #f66e00 !important;
+}
+
+/* ========= FONDO Y CONTENEDORES ========= */
+
+html {
+  background: transparent !important;
+}
+
+body {
+  background-color: #050309 !important;
+  background-image: url('/assets/images/banner.jpg') !important; /* cambia el nombre si tu imagen es otra */
+  background-position: center top !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed;
+}
+
+/* Estos son los “bloques grises” del tema */
+.initial-content,
+#main,
+article.page,
+.page__hero,
+.page__hero--overlay,
+.wrapper,
+.page,
+.page__content,
+.page__title,
+.page__meta,
+.page__footer {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* El contenedor principal donde va tu formulario:
+   lo hacemos tipo vidrio oscuro */
+.page .page__inner-wrap {
+  background: rgba(0, 0, 0, 0.70) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, .10);
+  padding: 1.8rem 1.6rem;
+}
+
+/* ========= FORMULARIOS (REPORTES) ========= */
+
+.page__content input[type="text"],
+.page__content input[type="email"],
+.page__content input[type="url"],
+.page__content input[type="password"],
+.page__content input[type="search"],
+.page__content input[type="tel"],
+.page__content textarea,
+.page__content select {
+  background: rgba(0, 0, 0, 0.60) !important;
+  border: 1px solid rgba(255, 255, 255, .22) !important;
+  color: #fff !important;
+  border-radius: 14px !important;
+  padding: 0.8rem 1rem !important;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, .6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.page__content input:focus,
+.page__content textarea:focus,
+.page__content select:focus {
+  background: rgba(0, 0, 0, 0.80) !important;
+  border-color: #f66e00 !important;
+  outline: none;
+  box-shadow: 0 0 0 1px rgba(246, 110, 0, .55);
+}
+
+.page__content input::placeholder,
+.page__content textarea::placeholder {
+  color: rgba(255, 255, 255, .45) !important;
+}
+
+.page__content label {
+  color: rgba(255, 255, 255, .86) !important;
+  font-weight: 500;
+}
+
+/* Un poco de aire para que no quede pegado arriba */
+.page__content {
+  margin-top: 1rem;
+}
