@@ -5,8 +5,8 @@ main:
     url: "https://tienda.kronoszone.me"  # cambia al enlace real
     external: true
   - title: "Reglas"
-    url: /reglas/
+    url: /reglas
   - title: "FAQ"
-    url: /faq/
+    url: /faq
   - title: "Changelogs"
     url: /changelogs/
