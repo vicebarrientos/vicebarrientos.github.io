@@ -15,6 +15,8 @@ header:
       url: "https://tienda.kronoszone.me"
     - label: "FAQ"
       url: "https://www.kronoszone.me/FAQ"
+    - label: "Reglas"
+      url: "https://www.kronoszone.me/reglas"
 excerpt: "<center><strong>mc.kronoszone.me</strong><br>Versiones <strong>1.13 – 1.21.10</strong><br>¡Eventos semanales y rangos V.I.Ps</center>"
 ---
 
