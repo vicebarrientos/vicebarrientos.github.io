@@ -132,34 +132,37 @@ h1, h2 { margin-top: .6rem; }
 }
 
 /* =========================
-   FONDO GLOBAL TIPO BANNER
+   FONDO GLOBAL CON BANNER
    ========================= */
 
-/* Usa tu imagen de fondo del banner aquí */
-body {
-  background:
-    #050309
-    url('/assets/images/banner.jpg') center top / cover fixed no-repeat;
-  /* quita el fondo sólido del skin */
+html {
+  background: transparent !important;
 }
 
-/* Capa oscura encima del fondo para que todo se lea */
+body {
+  position: relative;
+  background-color: #050309 !important;
+  background-image: url('/assets/images/banner.jpg') !important; /* cambia ruta si tu imagen se llama distinto */
+  background-position: center top !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed;
+}
+
+/* capa oscura encima del fondo para que se lea todo */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: -1;
-  background:
-    radial-gradient(circle at top, rgba(0,0,0,.15), rgba(0,0,0,.75));
+  background: radial-gradient(circle at top, rgba(0,0,0,.15), rgba(0,0,0,.78));
 }
 
 /* =========================
    CONTENEDORES PRINCIPALES
-   (quitar el "bloque gris feo")
    ========================= */
 
-/* Quita fondos sólidos del layout */
 .wrap,
 .page,
 .page__inner-wrap,
@@ -172,82 +175,86 @@ body::before {
   box-shadow: none !important;
 }
 
-/* Aplica efecto vidrio solo al contenido */
+/* bloque principal tipo vidrio */
 .page__inner-wrap {
-  background: rgba(3, 4, 10, 0.78);
+  background: rgba(0, 0, 0, 0.70) !important;
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-radius: 18px;
-  border: 1px solid rgba(255, 255, 255, .06);
+  border: 1px solid rgba(255, 255, 255, .08);
   padding: 1.8rem 1.6rem;
 }
 
-/* La barra gris que se ve como "línea" arriba/abajo */
-hr {
-  border-color: rgba(255, 255, 255, .16);
+/* títulos (REPORTES, REPORTAR JUGADOR) con un poquito de glow */
+.page__content h1,
+.page__content h2,
+.page__content h3 {
+  text-shadow: 0 0 10px rgba(0,0,0,.75);
+}
+
+/* líneas divisorias más suaves */
+.page__content hr,
+.page__title::after {
+  border-color: rgba(255, 255, 255, .18) !important;
+  background-color: rgba(255, 255, 255, .18) !important;
 }
 
 /* =========================
-   FORMULARIO / INPUTS
-   (reportes, contacto, etc.)
+   NAVBAR / MASTHEAD VIDRIO
    ========================= */
 
-input[type="text"],
-input[type="email"],
-input[type="url"],
-input[type="password"],
-input[type="search"],
-input[type="tel"],
-textarea,
-select {
-  background: rgba(0, 0, 0, 0.55);
-  border: 1px solid rgba(255, 255, 255, .18);
-  color: #fff;
-  border-radius: 14px;
-  padding: 0.8rem 1rem;
+.masthead,
+.greedy-nav {
+  background: rgba(2, 4, 10, 0.82) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 10px 30px rgba(0,0,0,.6);
+}
+
+/* =========================
+   FORMULARIOS (REPORTES)
+   ========================= */
+
+.page__content input[type="text"],
+.page__content input[type="email"],
+.page__content input[type="url"],
+.page__content input[type="password"],
+.page__content input[type="search"],
+.page__content input[type="tel"],
+.page__content textarea,
+.page__content select {
+  background: rgba(0, 0, 0, 0.60) !important;
+  border: 1px solid rgba(255, 255, 255, .22) !important;
+  color: #fff !important;
+  border-radius: 14px !important;
+  padding: 0.8rem 1rem !important;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, .6);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
 
-/* Que no sean TAN transparentes al escribir */
-input:focus,
-textarea:focus,
-select:focus {
-  background: rgba(0, 0, 0, 0.70);
-  border-color: #f66e00;
+.page__content input[type="text"]::placeholder,
+.page__content input[type="email"]::placeholder,
+.page__content textarea::placeholder {
+  color: rgba(255, 255, 255, .45) !important;
+}
+
+.page__content input:focus,
+.page__content textarea:focus,
+.page__content select:focus {
+  background: rgba(0, 0, 0, 0.80) !important;
+  border-color: #f66e00 !important;
   outline: none;
   box-shadow: 0 0 0 1px rgba(246, 110, 0, .55);
 }
 
-/* Placeholder más clarito */
-input::placeholder,
-textarea::placeholder {
-  color: rgba(255, 255, 255, .45);
-}
-
-/* Etiquetas de los campos (Tu nick, Nick del reportado, etc.) */
-label {
-  color: rgba(255, 255, 255, .86);
+/* labels de los campos */
+.page__content label {
+  color: rgba(255, 255, 255, .86) !important;
   font-weight: 500;
 }
 
-/* Botón del formulario, reutiliza tu estilo gamer */
-input[type="submit"],
-button[type="submit"] {
-  cursor: pointer;
-}
-
-/* =========================
-   CABECERAS DE SECCIÓN
-   (REPORTES, REPORTAR JUGADOR)
-   ========================= */
-
-h1, h2, h3 {
-  text-shadow: 0 0 10px rgba(0,0,0,.75);
-}
-
-/* Un poco de espacio para que no quede todo pegado arriba */
+/* un poquito de aire arriba del contenido */
 .page__content {
   margin-top: 1rem;
 }
