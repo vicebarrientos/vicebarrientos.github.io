@@ -1,4 +1,4 @@
 ---
 layout: single
-title: "<center>Bienvenido a Kronos Zone</center>"
+title: "<center>Reglas del Servidor</center>"
 ---
