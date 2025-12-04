@@ -131,3 +131,123 @@ h1, h2 { margin-top: .6rem; }
   .kz-field textarea{min-height:140px}
 }
 
+/* =========================
+   FONDO GLOBAL TIPO BANNER
+   ========================= */
+
+/* Usa tu imagen de fondo del banner aquí */
+body {
+  background:
+    #050309
+    url('/assets/images/kronos-bg.jpg') center top / cover fixed no-repeat;
+  /* quita el fondo sólido del skin */
+}
+
+/* Capa oscura encima del fondo para que todo se lea */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background:
+    radial-gradient(circle at top, rgba(0,0,0,.15), rgba(0,0,0,.75));
+}
+
+/* =========================
+   CONTENEDORES PRINCIPALES
+   (quitar el "bloque gris feo")
+   ========================= */
+
+/* Quita fondos sólidos del layout */
+.wrap,
+.page,
+.page__inner-wrap,
+.page__content,
+.archive,
+.page__footer,
+.page__meta,
+.page__title {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Aplica efecto vidrio solo al contenido */
+.page__inner-wrap {
+  background: rgba(3, 4, 10, 0.78);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, .06);
+  padding: 1.8rem 1.6rem;
+}
+
+/* La barra gris que se ve como "línea" arriba/abajo */
+hr {
+  border-color: rgba(255, 255, 255, .16);
+}
+
+/* =========================
+   FORMULARIO / INPUTS
+   (reportes, contacto, etc.)
+   ========================= */
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+textarea,
+select {
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, .18);
+  color: #fff;
+  border-radius: 14px;
+  padding: 0.8rem 1rem;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, .6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Que no sean TAN transparentes al escribir */
+input:focus,
+textarea:focus,
+select:focus {
+  background: rgba(0, 0, 0, 0.70);
+  border-color: #f66e00;
+  outline: none;
+  box-shadow: 0 0 0 1px rgba(246, 110, 0, .55);
+}
+
+/* Placeholder más clarito */
+input::placeholder,
+textarea::placeholder {
+  color: rgba(255, 255, 255, .45);
+}
+
+/* Etiquetas de los campos (Tu nick, Nick del reportado, etc.) */
+label {
+  color: rgba(255, 255, 255, .86);
+  font-weight: 500;
+}
+
+/* Botón del formulario, reutiliza tu estilo gamer */
+input[type="submit"],
+button[type="submit"] {
+  cursor: pointer;
+}
+
+/* =========================
+   CABECERAS DE SECCIÓN
+   (REPORTES, REPORTAR JUGADOR)
+   ========================= */
+
+h1, h2, h3 {
+  text-shadow: 0 0 10px rgba(0,0,0,.75);
+}
+
+/* Un poco de espacio para que no quede todo pegado arriba */
+.page__content {
+  margin-top: 1rem;
+}
